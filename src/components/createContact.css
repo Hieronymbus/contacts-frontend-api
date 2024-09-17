@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: hsl(0, 0%, 70%);
+}
+
+.modal-body {
+    margin: 0 auto;
+    max-width: 360px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+input[type=text]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 30%);
+    border-radius: 4px;
+}
+
+input:focus {
+    box-shadow: 0 0 10px hsl(211, 100%, 50%);
+    outline: none;
+}
+
+.modal-header {
+    font-size: 1.2rem;
+}
+
+.modal-header, label {
+    color: hsl(0, 0%, 50%);
+}
+
+.custom-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .custom-input-label {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid hsl(0, 0%, 90%);
+    border-radius: 4px;
+  }
+  
+  .custom-input {
+    display: none; /* Hide the default file input */
+    position: relative;
+  }
+  
+  .custom-input-label::after {
+    position: absolute;
+    right: 0;
+    content: 'Browse'; /* Adjust the label text */
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 30%);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .custom-input-label:hover::after {
+    background-color: hsl(0, 0%, 95%);
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .modal-footer button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: hsl(0, 0%, 30%);
+  }
+
+  .modal-footer button:first-child {
+    background-color: hsl(0, 0%, 90%);
+  }
+
+  .modal-footer button:first-child:hover {
+    background-color: hsl(0, 0%, 95%);
+  }
+
+  .modal-footer button:last-child {
+    background-color: hsl(211, 100%, 50%);
+    color: white;
+  }
+
+  .modal-footer button:last-child:hover {
+    background-color: hsl(211, 100%, 55%);
+  }

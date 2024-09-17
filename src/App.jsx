@@ -8,9 +8,8 @@ function App() {
 
   return (
     <>
-<Header />
-<ContactsList />
-     
+      <Header />
+      <ContactsList />
     </>
   )
 }

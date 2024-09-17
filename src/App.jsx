@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import CreateContact from './components/CreateContact';
 import './index.css';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-     
+     <CreateContact />
     </>
   )
 }

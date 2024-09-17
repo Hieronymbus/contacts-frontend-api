@@ -14,14 +14,16 @@ const Header = () => {
   }
 
   const noModal = (
-    <button onClick={handleDisplayModal}>Create Contact</button>
+    <button className="w-1/3 h-14 border-2 m-2 " onClick={handleDisplayModal}>Create Contact</button>
   )
   
   return (
-    <header>
+    <>
+    <header className="flex justify-between items-center">
+      <h1 className="text-5xl m-2">Contacts</h1>
       {isModalDisplayed ? <CreateContactForm onHandleCloseModal={handleCloseModal} /> : noModal}
     </header>
-    
+    </>
   )
 }
 

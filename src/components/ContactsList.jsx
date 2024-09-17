@@ -59,7 +59,7 @@ const handleCardClose = (id) => {
       )})}
       {contactClicked.isClicked && 
       <ContactCard 
-      contact={contacts[contactClicked.contactId]}
+        contact={contacts[contactClicked.contactId]}
         handleCardClose={handleCardClose}
       />}
       

@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import CreateContact from './components/CreateContact';
-import './index.css';
+import CreateContactForm from './components/CreateContactForm.jsx';
 
 function App() {
   
 
   return (
     <>
-     <CreateContact />
+     <CreateContactForm />
     </>
   )
 }

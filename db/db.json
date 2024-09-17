@@ -1,31 +1,14 @@
 {
   "contacts": [
     {
-      "id": "1",
-      "name": "John Smith",
-      "email": "john@gmail.com",
-      "phone": "021 049 9586",
+      "firstName": "Dave",
+      "lastName": "J",
+      "userName": "daveJ",
+      "email": "dave@gmail",
+      "dob": "4587578",
+      "event": "Coding",
       "image": "https://i.pravatar.cc/300",
-      "dob": "19/12/1981"
-    },
-    {
-      "id": "2",
-      "name": "Mary",
-      "email": "john@gmail.com",
-      "phone": "021 049 9586",
-      "image": "https://i.pravatar.cc/300",
-      "dob": "19/12/1981"
-    },
-    {
-      "id": "3",
-      "name": "Other Guy",
-      "email": "john@gmail.com",
-      "phone": "021 049 9586",
-      "image": "https://i.pravatar.cc/300",
-      "dob": "19/12/1981"
-    },
-    {
-      "id": "mzPWaDJ"
+      "id": 1
     }
   ]
 }

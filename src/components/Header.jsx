@@ -9,13 +9,17 @@ const Header = () => {
     setIsModalDisplayed(true);
   }
 
+  function handleCloseModal() {
+    setIsModalDisplayed(false);
+  }
+
   const noModal = (
     <button onClick={handleDisplayModal}>Create Contact</button>
   )
   
   return (
     <header>
-      {isModalDisplayed ? <CreateContactForm /> : noModal}
+      {isModalDisplayed ? <CreateContactForm onHandleCloseModal={handleCloseModal} /> : noModal}
     </header>
     
   )

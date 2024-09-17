@@ -53,7 +53,7 @@ const handleCardClose = (id) => {
         className='p-2 my-2 w-11/12 h-40 flex flex-col items-center border-solid border-2 border-indigo-600 text-4xl' 
         key={index}
        >
-        <p>{contact.name}</p>
+        <p>{contact.userName}</p>
         <p>{contact.dob}</p>
        </div> 
       )})}

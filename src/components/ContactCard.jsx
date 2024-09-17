@@ -6,11 +6,11 @@ const ContactCard = ({ contact, handleCardClose }) => {
     <div className="min-w-80 min-h-80 flex justify-center items-center">
       <img src={ contact.image} alt="Profile Pic" className="rounded-full " onClick={handleCardClose}></img>
       </div>
-      <p className="font-bold">{contact.name}</p>
+      <p className="font-bold">{contact.firstName} {contact.lastName}</p>
       <p>Email Address</p>
       <p>{contact.email}</p>
-      <p>Phone Number</p>
-      <p>{contact.phone}</p>
+      <p>Event</p>
+      <p>{contact.event}</p>
       <p>Birthday</p>
       <p>{contact.dob}</p>
     </div>

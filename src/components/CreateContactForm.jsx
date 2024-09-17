@@ -1,17 +1,20 @@
 import React from 'react';
 import './createContact.css';
+import ModalCreateInput from './ModalCreateInput.jsx';
 
 async function handleSubmit(e) {
   e.preventDefault();
 
   const formData = new FormData(e.target);
-  
+
   const response = await fetch('http://localhost:3000/contacts', {
     method: "POST",
     body: formData
   });
 
-  console.log(await response.json());
+  let formObj = Object.fromEntries(formData);
+
+  console.log(formObj);
 }
 
 const CreateContactForm = () => {
@@ -27,30 +30,13 @@ const CreateContactForm = () => {
             <input type='file' className='custom-input' id='modal-file-input' />
             <label htmlFor='modal-file-input' className='custom-input-label'>Choose file</label>
           </div>
-          <div className='modal-input-form-group'>
-            <label htmlFor='first-name'>First Name</label>  
-            <input type='text' id='first-name' name='firstName' />
-          </div>
-          <div className='modal-input-form-group'>
-            <label htmlFor='last-name'>Last Name</label>
-            <input type='text' id='last-name' name='lastName' />
-          </div>
-          <div className='modal-input-form-group'>
-            <label htmlFor='user-name'>User Name</label>
-            <input type='text' id='user-name' name='userName' />
-          </div>
-          <div className='modal-input-form-group'>
-            <label htmlFor='email'>Email</label>
-            <input type='text' id='email' name='email' />
-          </div>
-          <div className='modal-input-form-group'>
-            <label htmlFor='dob'>Birthday</label>
-            <input type='text' id='dob' name='dob' />
-          </div>
-          <div className='modal-input-form-group'>
-            <label htmlFor='event' >Event</label>
-            <input type='text' id='event' name='event' />
-          </div>
+          {/* Place these components within another component? */}
+          <ModalCreateInput id='firstName' type='text' label='First name' />
+          <ModalCreateInput id='lastName' type='text' label='Last name' />
+          <ModalCreateInput id='userName' type='text' label='User name' />
+          <ModalCreateInput id='email' type='text' label='Email' />
+          <ModalCreateInput id='dob' type='text' label='Birthday' />
+          <ModalCreateInput id='event' type='text' label='Event' />
         </div>
         <div className='modal-footer'>
           <button className='form-action-button'>Cancel</button>

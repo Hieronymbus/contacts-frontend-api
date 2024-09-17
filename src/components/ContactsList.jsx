@@ -27,6 +27,15 @@ const handleCardClick = (id) => {
   console.log(contacts[0])
 }
 
+const handleCardClose = (id) => {
+  setContactClicked({
+    isClicked:false,
+    contactId: id
+  })
+  console.log(id)
+  console.log(contacts[0])
+}
+
   useEffect(()=> {
     getContacts()
   },[])
@@ -48,7 +57,11 @@ const handleCardClick = (id) => {
         <p>{contact.dob}</p>
        </div> 
       )})}
-      {contactClicked.isClicked && <ContactCard contact={contacts[contactClicked.contactId]}/>}
+      {contactClicked.isClicked && 
+      <ContactCard 
+      contact={contacts[contactClicked.contactId]}
+        handleCardClose={handleCardClose}
+      />}
       
     </div>
 

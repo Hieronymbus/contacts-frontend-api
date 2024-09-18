@@ -27,8 +27,8 @@ const Header = () => {
 
       {isModalDisplayed && (
         <div
-          className="m-2 p-4 bg-white  flex flex-col 
-    justify-center items-center gap-4 text-4xl border-2 border-stone-950 rounded-xl"
+          className="m-2 p-4 bg-white flex flex-col 
+    justify-center items-center  text-4xl border-2 border-stone-950 rounded-xl"
         >
           <CreateContactForm onHandleCloseModal={handleCloseModal} />
         </div>

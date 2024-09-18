@@ -37,68 +37,68 @@ const CreateContactForm = ({ onHandleCloseModal }) => {
   }
 
   return (
-    <div className="modal-body">
-      <div className="modal-header">
-        <h2>Create New Contact</h2>
-      </div>
-      <form className="modal-form" onSubmit={handleSubmit}>
-        <div className="modal-file-form">
-          <div className="custom-file">
+    <div className="w-full">
+
+        <h2 className="text-center font-semibold">Create New Contact</h2>
+   
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+ 
+          <div className="flex flex-col gap-2">
+            <label htmlFor="modal-file-input" className="">
+              Choose Profile Image:
+            </label>
             <input
               type="file"
-              className="custom-input"
+              className="border-2 border-stone-700 rounded-lg"
               id="modal-file-input"
               name="image"
               onChange={setImage}
             />
-            <label htmlFor="modal-file-input" className="custom-input-label">
-              Choose file
-            </label>
           </div>
           {/* Place these components within another component? */}
           <ModalCreateInput
             id="firstName"
             type="text"
-            label="First name"
+            label="First name:"
             setValue={setFirstName}
           />
           <ModalCreateInput
             id="lastName"
             type="text"
-            label="Last name"
+            label="Last name:"
             setValue={setLastName}
           />
           <ModalCreateInput
             id="userName"
             type="text"
-            label="User name"
+            label="User name:"
             setValue={setUserName}
           />
           <ModalCreateInput
             id="email"
             type="text"
-            label="Email"
+            label="Email:"
             setValue={setEmail}
           />
           <ModalCreateInput
             id="dob"
             type="text"
-            label="Birthday"
+            label="Birthday:"
             setValue={setDob}
           />
           <ModalCreateInput
             id="event"
             type="text"
-            label="Event"
+            label="Event:"
             setValue={setEvent}
           />
-        </div>
-        <div className="modal-footer">
-          <button className="form-action-button" onClick={onHandleCloseModal}>
+  
+        <div className="flex justify-around gap-2">
+          <button className="border-2 border-stone-700 rounded-lg p-2" onClick={onHandleCloseModal}>
             Cancel
           </button>
-          <button className="form-action-button" type="submit">
-            submit
+          <button className="border-2 border-stone-700 rounded-lg p-2" type="submit">
+            Submit
           </button>
         </div>
       </form>

@@ -2,9 +2,9 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import ContactCard from './ContactCard'
 
-const ContactsList = ({ contactCount, setContactCount }) => {
+const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) => {
   
-  const [contacts, setContacts] = useState([]);
+
   const [contactClicked, setContactClicked] = useState({
     isClicked: false,
     contactId: ""
@@ -12,10 +12,10 @@ const ContactsList = ({ contactCount, setContactCount }) => {
   ); 
 
   async function getContacts () {
-    const response = await fetch("http://localhost:3000/contacts")
-    const data = await response.json()
-    setContacts(data)
-    setContactCount(contacts.length)
+    const response = await fetch("http://localhost:3000/contacts");
+    const data = await response.json();
+    setContacts(data);
+    setContactCount(contacts.length);
   };
 
   useEffect(()=> {
@@ -49,7 +49,9 @@ const ContactsList = ({ contactCount, setContactCount }) => {
               className='p-2 my-2 w-11/12 h-40 flex flex-col items-center border-solid border-2 border-indigo-600 text-4xl' 
               key={index}
             >
+              <p>User Name</p>
               <p>{contact.userName}</p>
+              <p>DOB</p>
               <p>{contact.dob}</p>
             </div> 
           )
@@ -60,6 +62,7 @@ const ContactsList = ({ contactCount, setContactCount }) => {
           contact={contacts[contactClicked.contactId]}
           handleCardClose={handleCardClose}
           setContactCount={setContactCount}
+          contacts={contacts}
         />
       }
       

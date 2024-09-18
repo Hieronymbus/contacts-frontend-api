@@ -8,13 +8,19 @@ import { useState } from 'react';
 
 function App() {
   
-  const [contactCount, setContactCount] = useState(null)
+  const [contactCount, setContactCount] = useState(null);
+  const [contacts, setContacts] = useState([]);
 
   return (
     <>
 
-      <Header setContactCount={setContactCount} contactCount={contactCount}/>
-      <ContactsList setContactCount={setContactCount} contactCount={contactCount}/>
+      <Header setContactCount={setContactCount} />
+      <ContactsList 
+        setContactCount={setContactCount} 
+        contactCount={contactCount} 
+        setContacts={setContacts}  
+        contacts={contacts}
+      />
 
     </>
   )

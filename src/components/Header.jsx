@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CreateContactForm from './CreateContactForm.jsx';
 
-const Header = ({ contactCount, setContactCount }) => {
+const Header = ({  setContactCount }) => {
 
   const [isModalDisplayed, setIsModalDisplayed] = useState(false);
 

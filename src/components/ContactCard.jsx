@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import EditContactForm from "./EditContactForm";
 
-const ContactCard = ({ contact, handleCardClose, setContactCount }) => {
+const ContactCard = ({ contact, handleCardClose, setContactCount, contacts }) => {
   
-  
+  const [renderEditForm,setRenderEditForm] = useState(false)
   
   const handleDeleteContact = async () => {
 
@@ -15,13 +16,19 @@ const ContactCard = ({ contact, handleCardClose, setContactCount }) => {
     setContactCount(prev => prev - 1)
   };
   const handleEditContact = async () => {
-
+    setRenderEditForm(true)
   }
   
   return (
     <div className="p-4 absolute z-10 bg-white w-11/12 flex flex-col 
     justify-center items-center gap-4 text-4xl border-2 border-stone-950 rounded-xl">
-      <div className="flex justify-end">
+
+      {renderEditForm == true ? 
+      <EditContactForm contact={contact} setRenderEditForm={setRenderEditForm} setContactCount={setContactCount} contactsData={contacts} /> 
+      :
+      
+      <>
+    <div className="flex justify-end">
         <button className="m-2" onClick={handleEditContact}>Edit</button>
         <button className="m-2" onClick={handleDeleteContact}>Delete</button>
       </div>
@@ -35,6 +42,7 @@ const ContactCard = ({ contact, handleCardClose, setContactCount }) => {
       <p>{contact.event}</p>
       <p>Birthday</p>
       <p>{contact.dob}</p>
+      </>}
     </div>
   );
 };

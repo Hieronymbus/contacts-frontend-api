@@ -1,26 +1,14 @@
 {
   "contacts": [
     {
-
-      "firstName": "chike1",
-      "lastName": "",
-      "userName": "",
-      "email": "asd@aasd.com",
-      "dob": "",
-      "event": "",
+      "firstName": "hwkfghdjg",
+      "lastName": "thfjfm",
+      "userName": "fmmnrf",
+      "email": "fyjfyn@edthgetr.com",
+      "dob": "ryhtrd",
+      "event": "rhyhdhre",
       "image": "https://i.pravatar.cc/300",
       "id": 1
-    },
-    {
-      "firstName": "chike",
-
-      "lastName": "",
-      "userName": "",
-      "email": "",
-      "dob": "",
-      "event": "",
-      "image": "https://i.pravatar.cc/300",
-      "id": 2
     }
   ]
 }

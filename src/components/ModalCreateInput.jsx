@@ -1,5 +1,4 @@
 import React from 'react';
-import './CreateContact.css';
 
 function ModalCreateInput(props) {
 

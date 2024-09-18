@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./createContact.css";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-const CreateContactForm = ({ onHandleCloseModal }) => {
+const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -33,7 +33,7 @@ const CreateContactForm = ({ onHandleCloseModal }) => {
     });
 
     console.log(await response.json());
-
+    setContactCount(prev => prev + 1)
     onHandleCloseModal();
   }
 

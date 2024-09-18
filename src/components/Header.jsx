@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CreateContactForm from './CreateContactForm.jsx';
 
-const Header = () => {
+const Header = ({ contactCount, setContactCount }) => {
 
   const [isModalDisplayed, setIsModalDisplayed] = useState(false);
 
@@ -21,7 +21,7 @@ const Header = () => {
     <>
     <header className="flex justify-between items-center">
       <h1 className="text-5xl m-2">Contacts</h1>
-      {isModalDisplayed ? <CreateContactForm onHandleCloseModal={handleCloseModal} /> : noModal}
+      {isModalDisplayed ? <CreateContactForm onHandleCloseModal={handleCloseModal} setContactCount={setContactCount}/> : noModal}
     </header>
     </>
   )

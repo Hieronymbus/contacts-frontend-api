@@ -1,7 +1,19 @@
 {
   "contacts": [
     {
-      "firstName": "123",
+
+      "firstName": "chike1",
+      "lastName": "",
+      "userName": "",
+      "email": "asd@aasd.com",
+      "dob": "",
+      "event": "",
+      "image": "https://i.pravatar.cc/300",
+      "id": 1
+    },
+    {
+      "firstName": "chike",
+
       "lastName": "",
       "userName": "",
       "email": "",

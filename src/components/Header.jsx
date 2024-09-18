@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import CreateContactForm from "./CreateContactForm.jsx";
 
-const Header = () => {
+
+const Header = ({  setContactCount }) => {
+
+
   const [isModalDisplayed, setIsModalDisplayed] = useState(false);
 
   function handleDisplayModal() {
@@ -20,6 +23,7 @@ const Header = () => {
 
   return (
     <>
+
       <header className="flex justify-between items-center">
         <h1 className="text-5xl m-2">Contacts</h1>
         {noModal}
@@ -33,6 +37,7 @@ const Header = () => {
           <CreateContactForm onHandleCloseModal={handleCloseModal} />
         </div>
       )}
+
     </>
   );
 };

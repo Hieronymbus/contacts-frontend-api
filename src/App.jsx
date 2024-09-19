@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './components/Header';
-import ContactsList from './components/ContactsList';
+import Header from './main-sections/Header';
+import Main from './main-sections/Main.jsx';
 import { useState } from 'react';
 
 
@@ -12,17 +12,12 @@ function App() {
   const [contacts, setContacts] = useState([]);
 
   return (
-    <>
+    <div id='body' className='flex flex-col items-center min-w-screen relative'>
 
       <Header setContactCount={setContactCount} />
-      <ContactsList 
-        setContactCount={setContactCount} 
-        contactCount={contactCount} 
-        setContacts={setContacts}  
-        contacts={contacts}
-      />
+      <Main setContactCount={setContactCount} contactCount={contactCount} contacts={contacts} setContacts={setContacts} />
 
-    </>
+    </div>
   )
 }
 

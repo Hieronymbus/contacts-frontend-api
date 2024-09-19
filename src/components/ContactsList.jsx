@@ -4,7 +4,6 @@ import ContactCard from './ContactCard'
 
 const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) => {
   
-
   const [contactClicked, setContactClicked] = useState({
     isClicked: false,
     contactId: ""
@@ -37,22 +36,27 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) 
     setContactCount(prev => prev)
   }
 
+  const border = 'border border-solid border-gray-500 rounded p-2.5 rounded';
   
   return (
 
-    <div className='w-screen h-screen flex flex-col justify-center items-center '>
-      {contacts.map((contact, index) => {
+    <div className='flex flex-col justify-start'>
+      {contacts.map((contact) => {
 
         return (
             <div 
-              onClick={() => handleCardClick(index)}
-              className='p-2 my-2 w-11/12 h-40 flex flex-col items-center border-solid border-2 border-indigo-600 text-4xl' 
-              key={index}
+              onClick={() => handleCardClick(contact.id)}
+              className={`${border} text-xl flex justify-center items-center w-full rounded-none mb-5`}
+              key={contact.id}
             >
-              <p>User Name</p>
-              <p>{contact.userName}</p>
-              <p>DOB</p>
-              <p>{contact.dob}</p>
+              <div id='list-col-1' className='flex justify-center w-1/2'>
+                <img src={contact.image} className='w-full rounded-full' />
+              </div>
+              <div id='list-col-2' className='w-10/12 pl-5 text-base'>
+                <p>User Name: {contact.userName}</p>
+                <p>DOB: {contact.dob}</p>
+                <p>Event: {contact.event}</p>
+              </div>
             </div> 
           )
       })}

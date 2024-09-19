@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CreateContactForm from "./CreateContactForm.jsx";
+import CreateContactForm from "../components/CreateContactForm.jsx";
 
 
 const Header = ({ setContactCount }) => {
@@ -23,12 +23,10 @@ const Header = ({ setContactCount }) => {
 
   return (
     <>
-
-      <header className="text-center relative">
+      <header className="text-center mb-5">
         <h1 className="text-5xl m-2">Contacts</h1>
         {displayModal}
       </header>
-
     </>
   );
 };

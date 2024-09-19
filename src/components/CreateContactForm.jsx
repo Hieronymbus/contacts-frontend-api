@@ -37,14 +37,14 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
     onHandleCloseModal();
   }
   return (
-    <div className="mx-auto h-screen w-80 flex flex-col justify-center bg-slate-100 px-5 py-5 rounded shadow-xl absolute left-0 top-0 right-0">
+    <div className="mx-auto my-auto w-80 flex flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed left-0 right-0">
       <h2 className="text-center text-gray-500 font-semibold text-2xl">Create New Contact</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex justify-between items-center mt-5">
           <label
             htmlFor="modal-file-input"
             className="custom-input-label text-base text-gray-500 justify-between items-center 
-              flex w-full ml-auto relative p-2.5 rounded border border-solid border-gray-500 "
+              flex w-full ml-auto relative p-2.5 rounded border border-solid border-gray-500"
             >
             Choose Profile Image:
           </label>

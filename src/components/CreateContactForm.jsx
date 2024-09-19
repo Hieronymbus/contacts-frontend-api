@@ -11,6 +11,8 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
   const [image, setImage] = useState("https://i.pravatar.cc/300");
 
   async function handleSubmit(e) {
+    e.preventDefault();
+
     const contacts = {
       firstName: firstName,
       lastName: lastName,
@@ -22,7 +24,6 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
     };
 
     e.preventDefault();
-
     const response = await fetch("http://localhost:3000/contacts", {
       method: "POST",
       headers: {
@@ -30,24 +31,26 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
       },
       body: JSON.stringify(contacts),
     });
-
     console.log(await response.json());
     setContactCount(prev => prev + 1);
+    
     onHandleCloseModal();
   }
-
   return (
-    <div className="w-full">
-      <h2 className="text-center font-semibold">Create New Contact</h2>
-
+    <div className="mx-auto h-screen w-80 flex flex-col justify-center bg-slate-100 px-5 py-5 rounded shadow-xl absolute left-0 top-0 right-0">
+      <h2 className="text-center text-gray-500 font-semibold text-2xl">Create New Contact</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="modal-file-input" className="">
+        <div className="flex justify-between items-center mt-5">
+          <label
+            htmlFor="modal-file-input"
+            className="custom-input-label text-base text-gray-500 justify-between items-center 
+              flex w-full ml-auto relative p-2.5 rounded border border-solid border-gray-500 "
+            >
             Choose Profile Image:
           </label>
           <input
             type="file"
-            className="border-2 border-stone-700 rounded-lg"
+            className="hidden relative"
             id="modal-file-input"
             name="image"
             onChange={setImage}
@@ -90,16 +93,15 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
           label="Event:"
           setValue={setEvent}
         />
-
-        <div className="flex justify-around gap-2">
+        <div className="flex justify-end gap-2">
           <button
-            className="border-2 border-stone-700 rounded-lg p-2"
+            className="text-base border-none rounded text-white bg-gray-400 hover:bg-gray-300 p-2.5"
             onClick={onHandleCloseModal}
           >
             Cancel
           </button>
           <button
-            className="border-2 border-stone-700 rounded-lg p-2"
+            className="text-base border-none rounded text-white bg-gray-400 hover:bg-gray-300 p-2.5"
             type="submit"
           >
             Submit
@@ -109,5 +111,4 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
     </div>
   );
 };
-
 export default CreateContactForm;

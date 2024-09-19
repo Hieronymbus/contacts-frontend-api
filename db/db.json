@@ -1,27 +1,7 @@
 {
   "contacts": [
     {
-      "id": "a053",
-      "firstName": "Kai",
-      "lastName": "Mitchell",
-      "userName": "Parrabellum",
-      "email": "kaimitchell.personal@gmail.com",
-      "dob": "12-10-1997",
-      "event": "Coding",
-      "image": "https://i.pravatar.cc/300"
-    },
-    {
-      "id": "f10a",
-      "firstName": "Lucy",
-      "lastName": "Duuu",
-      "userName": "LD45",
-      "email": "js@gmail.com",
-      "dob": "02-08-1997",
-      "event": "Ballet",
-      "image": "https://i.pravatar.cc/300"
-    },
-    {
-      "id": "69d2",
+      "id": "dbd9",
       "firstName": "",
       "lastName": "",
       "userName": "",
@@ -31,7 +11,7 @@
       "image": "https://i.pravatar.cc/300"
     },
     {
-      "id": "e9c5",
+      "id": "3cdf",
       "firstName": "",
       "lastName": "",
       "userName": "",
@@ -41,27 +21,7 @@
       "image": "https://i.pravatar.cc/300"
     },
     {
-      "id": "9418",
-      "firstName": "",
-      "lastName": "",
-      "userName": "",
-      "email": "",
-      "dob": "",
-      "event": "",
-      "image": "https://i.pravatar.cc/300"
-    },
-    {
-      "id": "3596",
-      "firstName": "",
-      "lastName": "",
-      "userName": "",
-      "email": "",
-      "dob": "",
-      "event": "",
-      "image": "https://i.pravatar.cc/300"
-    },
-    {
-      "id": "695f",
+      "id": "1da4",
       "firstName": "",
       "lastName": "",
       "userName": "",

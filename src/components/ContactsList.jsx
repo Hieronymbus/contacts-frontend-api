@@ -23,15 +23,15 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) 
 
   const handleCardClick = (id) => {
     setContactClicked({
-      isClicked:true,
-      contactId: id
+      isClicked: true,
+      index: id
     })
     
   }
   const handleCardClose = (id) => {
     setContactClicked({
-      isClicked:false,
-      contactId: id
+      isClicked: false,
+      index: id
     })
     setContactCount(prev => prev)
   }
@@ -40,13 +40,13 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) 
   
   return (
 
-    <div className='flex flex-col justify-start'>
-      {contacts.map((contact) => {
+    <div className='flex flex-col justify-start relative'>
+      {contacts.map((contact, index) => {
 
         return (
             <div 
-              onClick={() => handleCardClick(contact.id)}
-              className={`${border} text-xl flex justify-center items-center w-full rounded-none mb-5`}
+              onClick={() => handleCardClick(index)}
+              className={`${border} text-xl flex justify-center items-center w-full border-none rounded mb-5 bg-gray-300`}
               key={contact.id}
             >
               <div id='list-col-1' className='flex justify-center w-1/2'>
@@ -59,11 +59,12 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) 
               </div>
             </div> 
           )
+          
       })}
 
       {contactClicked.isClicked && 
         <ContactCard 
-          contact={contacts[contactClicked.contactId]}
+          contact={contacts[contactClicked.index]}
           handleCardClose={handleCardClose}
           setContactCount={setContactCount}
           contacts={contacts}

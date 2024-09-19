@@ -13,10 +13,8 @@ function App() {
 
   return (
     <div id='body' className='flex flex-col items-center min-w-screen relative'>
-
       <Header setContactCount={setContactCount} />
       <Main setContactCount={setContactCount} contactCount={contactCount} contacts={contacts} setContacts={setContacts} />
-
     </div>
   )
 }

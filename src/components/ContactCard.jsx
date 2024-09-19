@@ -20,12 +20,12 @@ const ContactCard = ({ contact, handleCardClose, setContactCount, contacts }) =>
   }
   
   return (
-    <div className="relative w-80 mx-auto bg-gray-500">
+    <div className="fixed w-80 mx-auto bg-gray-500 left-0 right-0">
 
       {renderEditForm == true ? (
         <EditContactForm contact={contact} setRenderEditForm={setRenderEditForm} setContactCount={setContactCount} contactsData={contacts} /> 
       ) : (
-        <div className='fixed w-80 mx-auto bg-gray-100'>
+        <div>
           <div className="flex justify-end">
             <button className="m-2" onClick={handleEditContact}>Edit</button>
             <button className="m-2" onClick={handleDeleteContact}>Delete</button>

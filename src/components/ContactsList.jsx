@@ -42,7 +42,7 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) 
 
     <div className='flex flex-col justify-start relative'>
       {contacts.map((contact, index) => {
-
+            
         return (
             <div 
               onClick={() => handleCardClick(index)}
@@ -59,7 +59,6 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) 
               </div>
             </div> 
           )
-          
       })}
 
       {contactClicked.isClicked && 

@@ -24,7 +24,7 @@ const ContactCard = ({ contact, handleCardClose, setContactCount, contacts }) =>
     justify-center items-center gap-4 text-4xl border-2 border-stone-950 rounded-xl">
 
       {renderEditForm == true ? 
-      <EditContactForm contact={contact} setRenderEditForm={setRenderEditForm} setContactCount={setContactCount} contactsData={contacts} /> 
+      <EditContactForm contact={contact} onHandlecloseModal={handleCardClose} setRenderEditForm={setRenderEditForm} setContactCount={setContactCount} contactsData={contacts} /> 
       :
       
       <>

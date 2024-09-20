@@ -1,42 +1,23 @@
 import React, { useState } from "react";
-import CreateContactForm from "./CreateContactForm.jsx";
+import CreateContactForm from "./CreateModal.jsx";
 
 
-const Header = ({  setContactCount }) => {
+const Header = ({  setState }) => {
 
-
-  const [isModalDisplayed, setIsModalDisplayed] = useState(false);
 
   function handleDisplayModal() {
-    setIsModalDisplayed(true);
+    setState(true);
   }
-
-  function handleCloseModal() {
-    setIsModalDisplayed(false);
-  }
-
-  const noModal = (
-    <button className="w-1/3 h-14 border-2 m-2 " onClick={handleDisplayModal}>
-      Create Contact
-    </button>
-  );
 
   return (
     <>
 
       <header className="flex justify-between items-center">
         <h1 className="text-5xl m-2">Contacts</h1>
-        {noModal}
+        <button className="w-1/3 h-14 border-2 m-2 " onClick={handleDisplayModal}>
+          Create Contact
+        </button>
       </header>
-
-      {isModalDisplayed && (
-        <div
-          className="m-2 p-4 bg-white flex flex-col 
-    justify-center items-center  text-4xl border-2 border-stone-950 rounded-xl"
-        >
-          <CreateContactForm onHandleCloseModal={handleCloseModal} />
-        </div>
-      )}
 
     </>
   );

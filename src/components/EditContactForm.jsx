@@ -6,6 +6,7 @@ const EditContactForm = ({
   setContactCount,
   contact,
   contactsData,
+  onHandlecloseModal
 }) => {
   const [firstName, setFirstName] = useState(contact.firstName);
   const [lastName, setLastName] = useState(contact.lastName);
@@ -60,6 +61,7 @@ const EditContactForm = ({
     console.log(await response.json());
     setContactCount((prev) => prev + 1);
     setRenderEditForm(false);
+    onHandlecloseModal();
 
     console.log("contacts, ", contactsData);
   }

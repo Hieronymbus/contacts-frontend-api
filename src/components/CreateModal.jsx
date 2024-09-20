@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
+const CreateModal = ({ onHandleCloseModal, setContactCount }) => {
+  
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -11,6 +12,8 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
   const [image, setImage] = useState("https://i.pravatar.cc/300");
 
   async function handleSubmit(e) {
+    e.preventDefault();
+
     const contacts = {
       firstName: firstName,
       lastName: lastName,
@@ -20,8 +23,6 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
       event: event,
       image: image,
     };
-
-    e.preventDefault();
 
     const response = await fetch("http://localhost:3000/contacts", {
       method: "POST",
@@ -110,4 +111,4 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
   );
 };
 
-export default CreateContactForm;
+export default CreateModal;

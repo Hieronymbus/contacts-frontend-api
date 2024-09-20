@@ -7,13 +7,14 @@ function Main({ setContactCount, contactCount, setContacts, contacts, createModa
 
     return (
         <main className='max-w-96'>
-            {createModal && <CreateModal isCreateModal={createModal} setState={setCreateModal} />}
-            {editModal && <EditModal setState={setEditModal} />}
+            {createModal && <CreateModal isCreateModal={createModal} setContactCount={setContactCount} setState={setCreateModal} />}
             <ContactsList 
                 setContactCount={setContactCount} 
                 contactCount={contactCount} 
                 setContacts={setContacts} 
-                contacts={contacts}  
+                contacts={contacts} 
+                setEditModal={setEditModal} 
+                editModal={editModal}
             />
         </main>
     );

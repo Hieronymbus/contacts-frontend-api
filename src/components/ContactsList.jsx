@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import CardModal from './CardModal.jsx';
 
-const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) => {
+const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, setEditModal, editModal }) => {
   
   const [contactClicked, setContactClicked] = useState({
     isClicked: false,
@@ -64,9 +64,11 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts }) 
       {contactClicked.isClicked && 
         <CardModal 
           contact={contacts[contactClicked.index]}
-          handleCardClose={handleCardClose}
+          onHandleCardClose={handleCardClose}
           setContactCount={setContactCount}
           contacts={contacts}
+          setEditModal={setEditModal}
+          editModal={editModal}
         />
       }
     </div>

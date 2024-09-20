@@ -14,6 +14,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState}) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    // Create an object that holds state values of user data for POSTing to the json server;
     const contacts = {
       firstName: firstName,
       lastName: lastName,
@@ -35,14 +36,14 @@ const CreateModal = ({ setContactCount, isCreateModal, setState}) => {
     setContactCount(prev => prev + 1);
 
     handleCloseModal();
-  }
+  };
 
   function handleCloseModal() {
     setState(false);
   }
 
   return (
-    <div className={`${isCreateModal ? 'flex' : 'hidden'} z-10 mx-auto my-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed left-0 right-0`}>
+    <div className={`${isCreateModal ? '' : 'hidden'} z-10 mx-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 left-0 right-0`}>
       <h2 className="text-center text-gray-500 font-semibold text-2xl">Create New Contact</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex justify-between items-center mt-5">

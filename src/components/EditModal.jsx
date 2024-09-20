@@ -65,7 +65,7 @@ const EditModal = ({
   }
 
   return (
-    <div className={`${isEditModal ? 'inline-block' : 'hidden'} w-full`}>
+    <div className={`${isEditModal ? '' : 'hidden'} w-full`}>
       <h2 className="text-center font-semibold">Create New Contact</h2>
 
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>

@@ -12,7 +12,7 @@ function App() {
   const [isCardModal, setIsCardModal] = useState(false);
 
   return (
-    <div id='body' className='flex flex-col items-center min-w-screen relative'>
+    <div id='body' className='flex flex-col items-center min-w-screen min-h-screen relative'>
       <Header setContactCount={setContactCount}  setState={setIsCreateModal} state={isCreateModal} />
       <Main 
         setContactCount={setContactCount} 

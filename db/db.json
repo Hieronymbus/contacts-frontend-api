@@ -1,43 +1,13 @@
 {
   "contacts": [
     {
-      "id": "679b",
-      "firstName": "",
-      "lastName": "",
-      "userName": "",
-      "email": "",
-      "dob": "",
-      "event": "",
-      "image": "https://i.pravatar.cc/300"
-    },
-    {
-      "id": "02c4",
-      "firstName": "",
-      "lastName": "",
-      "userName": "",
-      "email": "",
-      "dob": "",
-      "event": "",
-      "image": "https://i.pravatar.cc/300"
-    },
-    {
-      "id": "9509",
-      "firstName": "",
-      "lastName": "",
-      "userName": "",
-      "email": "",
-      "dob": "",
-      "event": "",
-      "image": "https://i.pravatar.cc/300"
-    },
-    {
-      "id": "22ac",
-      "firstName": "",
-      "lastName": "",
-      "userName": "",
-      "email": "",
-      "dob": "",
-      "event": "",
+      "id": "f431",
+      "firstName": "Kai",
+      "lastName": "Mitchell",
+      "userName": "Parrabellum",
+      "email": "kaimitchell.personal@gmail.com",
+      "dob": "12-10-1997",
+      "event": "jfkdlad",
       "image": "https://i.pravatar.cc/300"
     }
   ]

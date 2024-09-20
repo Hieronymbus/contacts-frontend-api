@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-const EditContactForm = ({
-  setRenderEditForm,
+const EditModal = ({
+  isEditModal,
   setContactCount,
   contact,
   contactsData,
@@ -65,7 +65,7 @@ const EditContactForm = ({
   }
 
   return (
-    <div className="w-full">
+    <div className={`${isEditModal ? 'inline-block' : 'hidden'} w-full`}>
       <h2 className="text-center font-semibold">Create New Contact</h2>
 
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -145,4 +145,4 @@ const EditContactForm = ({
   );
 };
 
-export default EditContactForm;
+export default EditModal;

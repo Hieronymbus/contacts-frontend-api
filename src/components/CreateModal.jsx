@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
+const CreateModal = ({ setContactCount, isCreateModal, setState}) => {
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -23,7 +24,6 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
       image: image,
     };
 
-    e.preventDefault();
     const response = await fetch("http://localhost:3000/contacts", {
       method: "POST",
       headers: {
@@ -33,11 +33,16 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
     });
     console.log(await response.json());
     setContactCount(prev => prev + 1);
-    
-    onHandleCloseModal();
+
+    handleCloseModal();
   }
+
+  function handleCloseModal() {
+    setState(false);
+  }
+
   return (
-    <div className="z-10 mx-auto my-auto w-80 flex flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed left-0 right-0">
+    <div className={`${isCreateModal ? 'flex' : 'hidden'} z-10 mx-auto my-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed left-0 right-0`}>
       <h2 className="text-center text-gray-500 font-semibold text-2xl">Create New Contact</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex justify-between items-center mt-5">
@@ -96,7 +101,7 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
         <div className="flex justify-end gap-2">
           <button
             className="text-base border-none rounded text-white bg-gray-400 hover:bg-gray-300 p-2.5"
-            onClick={onHandleCloseModal}
+            onClick={handleCloseModal}
           >
             Cancel
           </button>
@@ -111,4 +116,4 @@ const CreateContactForm = ({ onHandleCloseModal, setContactCount }) => {
     </div>
   );
 };
-export default CreateContactForm;
+export default CreateModal;

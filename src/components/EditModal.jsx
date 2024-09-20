@@ -5,7 +5,7 @@ const EditModal = ({
   isEditModal,
   setContactCount,
   contact,
-  contactsData,
+  contacts,
 }) => {
   const [firstName, setFirstName] = useState(contact.firstName);
   const [lastName, setLastName] = useState(contact.lastName);
@@ -18,7 +18,7 @@ const EditModal = ({
   let existingFirstName;
   let nameTaken = "";
 
-  contactsData.forEach((contact) => {
+  contacts.forEach((contact) => {
     existingFirstName = contact.firstName;
   });
 

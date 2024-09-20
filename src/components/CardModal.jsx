@@ -1,7 +1,7 @@
 import React from "react";
 import EditModal from "./EditModal";
 
-const CardModal = ({ setEditModal, onHandleCardClose, contact, editModal }) => {
+const CardModal = ({ setEditModal, onHandleCardClose, contact, contacts, editModal }) => {
   
   const handleDeleteContact = async () => {
     const response = await fetch (`http://localhost:3000/contacts/${contact.id}`,{
@@ -25,7 +25,7 @@ const CardModal = ({ setEditModal, onHandleCardClose, contact, editModal }) => {
     <>
       {
         editModal ? 
-          <EditModal contact={contact} /> 
+          <EditModal contact={contact} contacts={contacts}/> 
         :       
           <div className={`fixed w-80 max-h-fit my-auto mx-auto bg-gray-100 rounded shadow-xl left-0 right-0 top-0`}>
             <div>

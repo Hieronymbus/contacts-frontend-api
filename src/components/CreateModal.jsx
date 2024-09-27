@@ -26,16 +26,17 @@ const CreateModal = ({ setContactCount, isCreateModal, setState}) => {
     };
 
     const response = await fetch("http://localhost:3000/contacts", {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(contacts),
     });
-    console.log(await response.json());
+
     setContactCount(prev => prev + 1);
 
-    handleCloseModal();
+    handleCloseModal(); 
   };
 
   function handleCloseModal() {

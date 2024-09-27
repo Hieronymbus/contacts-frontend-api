@@ -12,12 +12,13 @@ const CardModal = ({ setEditModal, onHandleCardClose, contact, contacts, editMod
     setContactCount(prev => prev - 1);
   };
 
-  const handleEditContact = () => {
+  const handleEditContact = (e) => {
+    e.preventDefault();
+
     setEditModal(true);
-    onHandleCardClose();
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (e) => {
     onHandleCardClose();
   };
   
@@ -25,7 +26,7 @@ const CardModal = ({ setEditModal, onHandleCardClose, contact, contacts, editMod
     <>
       {
         editModal ? 
-          <EditModal contact={contact} contacts={contacts}/> 
+          <EditModal contact={contact} contacts={contacts} setEditModal={setEditModal} isEditModal={editModal} /> 
         :       
           <div className={`fixed w-80 max-h-fit my-auto mx-auto bg-gray-100 rounded shadow-xl left-0 right-0 top-0`}>
             <div>

@@ -6,7 +6,7 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, se
   
   const [contactClicked, setContactClicked] = useState({
     isClicked: false,
-    contactId: ""
+    index: ""
   }); 
 
   async function getContacts () {
@@ -20,17 +20,17 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, se
     getContacts();
   },[contactCount]);
 
-  const handleCardClick = (id) => {
+  const handleCardClick = (index) => {
     setContactClicked({
       isClicked: true,
-      index: id
+      index: index // Set index to pass the correct contact to CardModal by accessing the contact with index of args value;
     });
   };
 
-  const handleCardClose = (id) => {
+  const handleCardClose = (index) => {
     setContactClicked({
       isClicked: false,
-      index: id
+      index: index
     });
     setContactCount(prev => prev);
   };

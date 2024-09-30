@@ -50,7 +50,7 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, se
             key={contact.id}
           >
             <div id='list-col-1' className='flex justify-center w-1/2'>
-              <img src={contact.image} className='w-full rounded-full' />
+              <img src={contact.image} className='w-full rounded-full aspect-square' />
             </div>
             <div id='list-col-2' className='w-10/12 pl-5 text-base'>
               <p>{contact.firstName} {contact.lastName}</p>

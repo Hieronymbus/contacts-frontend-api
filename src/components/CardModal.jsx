@@ -36,8 +36,8 @@ const CardModal = ({ setEditModal, onHandleCardClose, contact, contacts, editMod
                 <button className="m-2" onClick={handleDeleteContact}>Delete</button>
               </form>
 
-              <div className="w-full min-h-80 flex justify-center items-center">
-                <img src={contact.image} alt="Profile Pic" className="rounded-full" onClick={onHandleCardClose} />
+              <div className="w-full min-h-80 flex justify-center items-center p-5">
+                <img src={contact.image} alt="Profile Pic" className="rounded-full aspect-square" onClick={onHandleCardClose} />
               </div>
               {/* place the stragglers within a div to make future styling easier */}
               <div className='p-5'>

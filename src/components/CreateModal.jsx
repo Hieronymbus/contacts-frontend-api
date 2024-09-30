@@ -8,17 +8,24 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [dob, setDob] = useState("");
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState('');
   const [event, setEvent] = useState("");
-  const [image, setImage] = useState("https://i.pravatar.cc/300");
+  const [image, setImage] = useState('');
 
   const modalRef = useRef();
-  
+
+  function handleChangeImage(e) {
+    const file = e.target.files[0];
+    const imageURL = URL.createObjectURL(file);
+    setImage(imageURL);
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     setErrors({});
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     //Error handling;
 
@@ -27,6 +34,9 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
     if (firstName === '') {
       setErrors(prev => ({...prev, firstName: 'Enter a name'}));
       isError = true;
+    }
+    if (number.length < 10) {
+      setErrors(prev => ({...prev, number: 'Enter a valid number'}));
     };
     if (lastName === '') {
       setErrors(prev => ({...prev, lastName: 'Enter a name'}));
@@ -39,6 +49,8 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
     if (email === '') {
       setErrors(prev => ({...prev, email: 'Enter an email'}));
       isError = true;
+    } else if (!emailRegex.test(email)) {
+      setErrors(prev => ({...prev, email: 'Please enter a valid email'}))
     };
 
     if (isError) {
@@ -90,6 +102,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
 
   function handleCloseModal() {
     setState(false);
+    setErrors({});
   }
 
   return (
@@ -115,7 +128,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
               className="hidden relative"
               id="modal-file-input"
               name="image"
-              onChange={setImage}
+              onChange={handleChangeImage}
             />
           </div>
           {/* Place these components within another component? */}
@@ -151,6 +164,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             setValue={setNumber}
             setErrors={setErrors}
           />
+          {errors.number && <p className='-mt-3 text-red-600 text-xs'>{errors.number}</p>}
           <ModalCreateInput
             id="email"
             type="text"

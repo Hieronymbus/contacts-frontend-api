@@ -41,13 +41,14 @@ const CardModal = ({ setEditModal, onHandleCardClose, contact, contacts, editMod
               </div>
               {/* place the stragglers within a div to make future styling easier */}
               <div className='p-5'>
-                <p className="font-bold">{contact.firstName} {contact.lastName}</p>
-                <p>Email Address</p>
-                <p>{contact.email}</p>
-                <p>Event</p>
-                <p>{contact.event}</p>
-                <p>Birthday</p>
-                <p>{contact.dob}</p>
+                <p className="font-bold text-3xl text-center">{contact.firstName} {contact.lastName}</p>
+                <p className="text-center">{contact.email}</p>
+                <p className="text-al">Phone number</p>
+                <p className="mb-2 text-slate-500">{contact.phoneNumber}</p>
+                <p className="text-xl">Event</p>
+                <p className="mb-2 text-slate-500">{contact.event}</p>
+                <p className="text-xl">Birthday</p>
+                <p className="mb-2 text-slate-500">{contact.dob}</p>
               </div>
             </div>
           </div>

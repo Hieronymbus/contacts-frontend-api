@@ -53,9 +53,9 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, se
               <img src={contact.image} className='w-full rounded-full' />
             </div>
             <div id='list-col-2' className='w-10/12 pl-5 text-base'>
-              <p>User Name: {contact.userName}</p>
-              <p>DOB: {contact.dob}</p>
-              <p>Event: {contact.event}</p>
+              <p>{contact.firstName} {contact.lastName}</p>
+              <p>{contact.dob}</p>
+              <p>{contact.event}</p>
             </div>
           </div> 
           )

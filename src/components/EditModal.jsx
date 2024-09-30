@@ -95,36 +95,43 @@ const EditModal = ({
           type="text"
           label="First name:"
           setValue={setFirstName}
+          value={firstName}
+          required
         />
         <ModalCreateInput
           id="lastName"
           type="text"
           label="Last name:"
           setValue={setLastName}
+          value={lastName}
         />
         <ModalCreateInput
           id="userName"
           type="text"
           label="User name:"
           setValue={setUserName}
+          value={userName}
         />
         <ModalCreateInput
           id="email"
           type="text"
           label="Email:"
           setValue={setEmail}
+          value={email}
         />
         <ModalCreateInput
           id="dob"
           type="text"
           label="Birthday:"
           setValue={setDob}
+          value={dob}
         />
         <ModalCreateInput
           id="event"
           type="text"
           label="Event:"
           setValue={setEvent}
+          value={event}
         />
         <div className="flex justify-end gap-2">
           <button

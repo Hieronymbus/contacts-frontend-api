@@ -14,6 +14,17 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
 
   const modalRef = useRef();
 
+      const contacts = {
+      firstName: firstName,
+      lastName: lastName,
+      userName: userName,
+      email: email,
+      dob: dob,
+      event: event,
+      image: image,
+      number: number,
+    };
+
   function handleChangeImage(e) {
     const file = e.target.files[0];
     const imageURL = URL.createObjectURL(file);
@@ -58,19 +69,6 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
       console.log(errors);
       return;
     };
-
-    // Create an object that holds state values of user data for POSTing to the json server;
-    const contacts = {
-      firstName: firstName,
-      lastName: lastName,
-      userName: userName,
-      email: email,
-      dob: dob,
-      event: event,
-      image: image,
-      number: number,
-    };
-
 
     const response = await fetch("http://localhost:3000/contacts", {
 

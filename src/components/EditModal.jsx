@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
 const EditModal = ({
@@ -6,7 +6,6 @@ const EditModal = ({
   setEditModal,
   setContactCount,
   contact,
-  contacts,
 }) => {
   const [firstName, setFirstName] = useState(contact.firstName);
   const [lastName, setLastName] = useState(contact.lastName);
@@ -16,23 +15,33 @@ const EditModal = ({
   const [event, setEvent] = useState(contact.event);
   const [image, setImage] = useState(contact.image);
 
-  let existingFirstName;
-  let nameTaken = "";
+  const modalRef = useRef();
 
-  contacts.forEach((contact) => {
-    existingFirstName = contact.firstName;
-  });
+  useEffect(() => {
 
-  if (firstName === existingFirstName) {
-    nameTaken = "name already exists";
-  }
+    function handleClickOutside(e) {
+
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        handleCloseModal();
+        console.log('clicked outside');
+      };
+
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+
+  }, [])
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (firstName === existingFirstName || !emailRegex.test(email)) {
+    if (!emailRegex.test(email)) {
       alert("nah");
       return;
     }
@@ -63,13 +72,19 @@ const EditModal = ({
     setEditModal(false);
   };
 
+  function handleChangeImage(e) {
+    const file = e.target.files[0];
+    const imageURL = URL.createObjectURL(file);
+    setImage(imageURL);
+    console.log(image);
+  };
+
   function handleCloseModal(e) {
-    e.preventDefault();
     setEditModal(false);
-  }
+  };
 
   return (
-    <div className={`${isEditModal ? '' : 'hidden'} z-10 mx-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 left-0 right-0`}>
+    <div ref={modalRef} className={`${isEditModal ? '' : 'hidden'} z-10 mx-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 left-0 right-0`}>
       <h2 className="text-center text-gray-500 font-semibold text-2xl">Edit Contact</h2>
       
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -86,7 +101,7 @@ const EditModal = ({
             className="hidden relative"
             id="modal-file-input"
             name="image"
-            onChange={setImage}
+            onChange={handleChangeImage}
           />
         </div>
         {/* Place these components within another component? */}

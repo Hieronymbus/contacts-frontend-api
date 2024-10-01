@@ -15,29 +15,18 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
   const modalRef = useRef();
   const fileRef = useRef();
 
-      const contacts = {
-      firstName: firstName,
-      lastName: lastName,
-      userName: userName,
-      email: email,
-      dob: dob,
-      event: event,
-      number: number,
-    };
-
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // const formData = new FormData(e.target);
-    // formData.append('image', fileRef.current);
-
-    // const imgRes = await fetch('http://localhost:3000/contacts', {
-    //   method: "POST",
-    //   headers: {
-    //     "Accept": "application/json",
-    //   },
-    //   body: formData
-    // });
+    const formData = new FormData();
+    formData.append('image', firstName);
+    formData.append('firstName', firstName);
+    formData.append('lastName', lastName);
+    formData.append('userName', userName);
+    formData.append('email', email);
+    formData.append('dob', dob);
+    formData.append('event', event);
+    formData.append('number', number);
 
     setErrors({});
 
@@ -76,13 +65,11 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
     };
 
     const response = await fetch("http://localhost:3000/contacts", {
-
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(contacts),
+      body: formData
     });
+    console.log(await response.json());
+
     setContactCount(prev => prev + 1);
 
     handleCloseModal();
@@ -132,7 +119,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
               className="hidden relative"
               id="modal-file-input"
               name="image"
-              onChange={(e) => fileRef.current = e.target.files[0]}// Update fileref value;
+              onChange={(e) => fileRef.current = e.target.files[0]}
             />
           </div>
           {/* Place these components within another component? */}

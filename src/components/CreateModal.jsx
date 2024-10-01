@@ -3,16 +3,17 @@ import ModalCreateInput from "./ModalCreateInput.jsx";
 
 const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErrors}) => {
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dob, setDob] = useState("");
-  const [number, setNumber] = useState('');
-  const [event, setEvent] = useState("");
+  const [firstName, setFirstName] = useState("Freddy");
+  const [lastName, setLastName] = useState("Lamb");
+  const [userName, setUserName] = useState("FreeLamb");
+  const [email, setEmail] = useState("Freelamb@gmail.com");
+  const [dob, setDob] = useState("Nov 12, 2000");
+  const [number, setNumber] = useState('021 089 06584');
+  const [event, setEvent] = useState("Coding");
   const [image, setImage] = useState('');
 
   const modalRef = useRef();
+  const fileRef = useRef();
 
       const contacts = {
       firstName: firstName,
@@ -21,18 +22,22 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
       email: email,
       dob: dob,
       event: event,
-      image: image,
       number: number,
     };
 
-  function handleChangeImage(e) {
-    const file = e.target.files[0];
-    const imageURL = URL.createObjectURL(file);
-    setImage(imageURL);
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // const formData = new FormData(e.target);
+    // formData.append('image', fileRef.current);
+
+    // const imgRes = await fetch('http://localhost:3000/contacts', {
+    //   method: "POST",
+    //   headers: {
+    //     "Accept": "application/json",
+    //   },
+    //   body: formData
+    // });
 
     setErrors({});
 
@@ -80,15 +85,16 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
     });
     setContactCount(prev => prev + 1);
 
-      handleCloseModal();
+    handleCloseModal();
+
   };
 
   useEffect(() => {
       function handleClickOutside(e) {
         if (modalRef.current && !modalRef.current.contains(e.target)) {
           handleCloseModal();
-        }
-      }
+        };
+      };
 
       document.addEventListener('mousedown', handleClickOutside);
 
@@ -101,7 +107,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
   function handleCloseModal() {
     setState(false);
     setErrors({});
-  }
+  };
 
   return (
     <div 
@@ -126,7 +132,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
               className="hidden relative"
               id="modal-file-input"
               name="image"
-              onChange={handleChangeImage}
+              onChange={(e) => fileRef.current = e.target.files[0]}// Update fileref value;
             />
           </div>
           {/* Place these components within another component? */}
@@ -137,6 +143,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             setValue={setFirstName}
             setErrors={setErrors}
             errors={errors}
+            value={firstName}
           />
           {errors.firstName && <p className="-mt-3 text-red-600 text-xs">{errors.firstName}</p>}
           <ModalCreateInput
@@ -145,6 +152,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             label="Last name:"
             setValue={setLastName}
             setErrors={setErrors}
+            value={lastName}
           />
           {errors.lastName && <p className="-mt-3 text-red-600 text-xs">{errors.lastName}</p>}
           <ModalCreateInput
@@ -153,6 +161,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             label="User name:"
             setValue={setUserName}
             setErrors={setErrors}
+            value={userName}
           />
           {errors.userName && <p className="-mt-3 text-red-600 text-xs">{errors.userName}</p>}
           <ModalCreateInput
@@ -161,6 +170,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             label="Phone number:"
             setValue={setNumber}
             setErrors={setErrors}
+            value={number}
           />
           {errors.number && <p className='-mt-3 text-red-600 text-xs'>{errors.number}</p>}
           <ModalCreateInput
@@ -169,6 +179,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             label="Email  :"
             setValue={setEmail}
             setErrors={setErrors}
+            value={email}
           />
           {errors.email && <p className="-mt-3 text-red-600 text-xs">{errors.email}</p>}
           <ModalCreateInput
@@ -177,6 +188,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             label="Birthday:"
             setValue={setDob}
             setErrors={setErrors}
+            value={dob}
           />
           <ModalCreateInput
             id="event"
@@ -184,6 +196,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
             label="Event:"
             setValue={setEvent}
             setErrors={setErrors}
+            value={event}
           />
           <div className="flex justify-end gap-2">
             <button

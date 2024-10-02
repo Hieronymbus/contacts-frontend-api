@@ -14,6 +14,8 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, se
     const data = await response.json();
     setContacts(data);
     setContactCount(contacts.length);
+
+    console.log('DATA ', await data); // TEST
   };
 
   useEffect(()=> {

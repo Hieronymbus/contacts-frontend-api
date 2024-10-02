@@ -19,7 +19,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('image', firstName);
+    formData.append('image', fileRef.current);
     formData.append('firstName', firstName);
     formData.append('lastName', lastName);
     formData.append('userName', userName);
@@ -80,6 +80,7 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
       function handleClickOutside(e) {
         if (modalRef.current && !modalRef.current.contains(e.target)) {
           handleCloseModal();
+          console.log(fileRef.current.name);
         };
       };
 

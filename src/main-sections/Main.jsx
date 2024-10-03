@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ContactsList from '../components/ContactsList.jsx';
 import CreateModal from '../components/CreateModal.jsx';
 
@@ -13,6 +13,8 @@ function Main({
         setErrors,    
 }) {
 
+    const [image, setImage] = useState('');
+
     return (
         <main className='max-w-96'>
             {createModal && 
@@ -21,7 +23,8 @@ function Main({
                     setContactCount={setContactCount} 
                     setCreateModal={setCreateModal} 
                     errors={errors}
-                    setErrors={setErrors}    
+                    setErrors={setErrors}  
+                    setImage={setImage}  
                 />
             }
             <ContactsList 
@@ -31,6 +34,7 @@ function Main({
                 contacts={contacts} 
                 errors={errors}
                 setErrors={setErrors}
+                image={image}
             />
         </main>
     );

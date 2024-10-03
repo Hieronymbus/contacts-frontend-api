@@ -9,7 +9,8 @@ const ContactsList = (
     setContacts,
     contacts, 
     setErrors,
-    errors
+    errors,
+    image
   }) => {
   
   const [editModal, setEditModal] = useState(false);
@@ -63,7 +64,7 @@ const ContactsList = (
             key={contact.id}
           >
             <div id='list-col-1' className='flex justify-center w-1/2'>
-              <img src={contact.image} className='w-full rounded-full aspect-square' />
+              <img src={image} className='w-full rounded-full aspect-square' />
             </div>
             <div id='list-col-2' className='w-10/12 pl-5 text-base'>
               <p>{contact.firstName} {contact.lastName}</p>

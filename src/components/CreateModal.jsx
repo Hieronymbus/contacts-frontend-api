@@ -1,7 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, setErrors }) => {
+const CreateModal = ({ 
+  setContactCount, 
+  createModal, 
+  setCreateModal, 
+  errors, 
+  setErrors,
+  setImage
+}) => {
 
   const [firstName, setFirstName] = useState("Freddy");
   const [lastName, setLastName] = useState("Lamb");
@@ -60,8 +67,10 @@ const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, set
       body: formData
     });
 
+//TODO: Amalgamate a url path to static image folder and imagename. to display image through image src attribute. 
     const data = await response.json();
     const imageName = data.name;
+    setImage(`http://localhost:3000/uploads/${imageName}`);
     console.log(imageName);
 
     let isError = false;

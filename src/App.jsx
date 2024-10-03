@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './main-sections/Header';
 import Main from './main-sections/Main.jsx';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function App() {
   

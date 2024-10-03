@@ -16,7 +16,6 @@ const EditModal = ({
   const [dob, setDob] = useState(contact.dob);
   const [number, setNumber] = useState(contact.number);
   const [event, setEvent] = useState(contact.event);
-  const [image, setImage] = useState(contact.image);
 
   const modalRef = useRef();
   const fileRef = useRef();
@@ -51,8 +50,9 @@ const EditModal = ({
     }
 
     const formData = new FormData();
+    const imageFile = fileRef.current === null ? '' : fileRef.current;
 
-    formData.append('image', fileRef.current);
+    formData.append('image', imageFile);
     formData.append('firstName', firstName);
     formData.append('lastName', lastName);
     formData.append('userName', userName);
@@ -62,8 +62,7 @@ const EditModal = ({
     formData.append('number', number);
 
     const response = await fetch(
-      `http://localhost:3000/contacts/${contact.id}`,
-      {
+      `http://localhost:3000/contacts/${contact.id}`, {
         method: "PUT",
         body: formData,
       }
@@ -96,6 +95,7 @@ const EditModal = ({
             className="hidden relative"
             id="modal-file-input"
             name="image"
+            value={fileRef.current}
             onChange={(e) => fileRef.current = e.target.files[0]}
           />
         </div>

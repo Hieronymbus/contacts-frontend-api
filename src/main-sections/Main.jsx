@@ -1,7 +1,6 @@
 import React from 'react';
 import ContactsList from '../components/ContactsList.jsx';
 import CreateModal from '../components/CreateModal.jsx';
-import EditModal from '../components/EditModal.jsx';
 
 function Main({ 
         setContactCount,    

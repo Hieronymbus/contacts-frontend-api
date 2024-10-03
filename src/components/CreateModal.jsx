@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, setErrors}) => {
+const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, setErrors }) => {
 
   const [firstName, setFirstName] = useState("Freddy");
   const [lastName, setLastName] = useState("Lamb");
@@ -10,7 +10,6 @@ const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, set
   const [dob, setDob] = useState("Nov 12, 2000");
   const [number, setNumber] = useState('021 089 06584');
   const [event, setEvent] = useState("Coding");
-  const [image, setImage] = useState('');
 
   const modalRef = useRef();
   const fileRef = useRef();
@@ -29,15 +28,21 @@ const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, set
       document.removeEventListener('mousedown', handleClickOutside);
     }
     
-}, []);
+  }, []);
+
+  function handleChangeImage(e) {
+
+    fileRef.current = e.target.files[0];
+  };
 
   async function handleSubmit(e) {
 
     e.preventDefault();
-
+    
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const formData = new FormData();
+
     formData.append('image', fileRef.current);
     formData.append('firstName', firstName);
     formData.append('lastName', lastName);
@@ -49,9 +54,15 @@ const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, set
 
     const response = await fetch("http://localhost:3000/contacts", {
       method: "POST",
+      headers: {
+        "Accept": "application/json",
+      },
       body: formData
     });
-    // console.log(await response.json());
+
+    const data = await response.json();
+    const imageName = data.name;
+    console.log(imageName);
 
     let isError = false;
 
@@ -115,7 +126,7 @@ const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, set
               className="hidden relative"
               id="modal-file-input"
               name="image"
-              onChange={(e) => fileRef.current = e.target.files[0]}
+              onChange={handleChangeImage}
             />
           </div>
           {/* Place these components within another component? */}

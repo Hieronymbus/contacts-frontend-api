@@ -7,9 +7,7 @@ function App() {
   
   const [contactCount, setContactCount] = useState(null);
   const [contacts, setContacts] = useState([]);
-  const [isCreateModal, setIsCreateModal] = useState(false);
-  const [isEditModal, setIsEditModal] = useState(false);
-  const [isCardModal, setIsCardModal] = useState(false);
+  const [createModal, setCreateModal] = useState(false);
   const [errors, setErrors] = useState({});
 
   return (
@@ -26,20 +24,16 @@ function App() {
     >
       <Header 
         setContactCount={setContactCount}     
-        setState={setIsCreateModal} 
-        state={isCreateModal} 
+        setCreateModal={setCreateModal} 
+        createModal={createModal} 
       />
       <Main 
         setContactCount={setContactCount} 
         contactCount={contactCount} 
         setContacts={setContacts} 
         contacts={contacts} 
-        cardModal={isCardModal}
-        setIsCardModal={setIsCardModal}
-        createModal={isCreateModal} 
-        setCreateModal={setIsCreateModal} 
-        editModal={isEditModal} 
-        setEditModal={setIsEditModal}
+        createModal={createModal}
+        setCreateModal={setCreateModal}
         errors={errors}
         setErrors={setErrors}  
         />

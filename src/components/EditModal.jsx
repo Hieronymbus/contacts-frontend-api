@@ -2,20 +2,24 @@ import React, { useState, useRef, useEffect } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
 const EditModal = ({
-  isEditModal,
+  editModal,
   setEditModal,
   setContactCount,
   contact,
+  setErrors,
+  errors
 }) => {
   const [firstName, setFirstName] = useState(contact.firstName);
   const [lastName, setLastName] = useState(contact.lastName);
   const [userName, setUserName] = useState(contact.userName);
   const [email, setEmail] = useState(contact.email);
   const [dob, setDob] = useState(contact.dob);
+  const [number, setNumber] = useState(contact.number);
   const [event, setEvent] = useState(contact.event);
   const [image, setImage] = useState(contact.image);
 
   const modalRef = useRef();
+  const fileRef = useRef();
 
   useEffect(() => {
 
@@ -46,45 +50,36 @@ const EditModal = ({
       return;
     }
 
-    const contacts = {
-      firstName: firstName,
-      lastName: lastName,
-      userName: userName,
-      email: email,
-      dob: dob,
-      event: event,
-      image: image,
-    };
+    const formData = new FormData();
+
+    formData.append('image', fileRef.current);
+    formData.append('firstName', firstName);
+    formData.append('lastName', lastName);
+    formData.append('userName', userName);
+    formData.append('email', email);
+    formData.append('dob', dob);
+    formData.append('event', event);
+    formData.append('number', number);
 
     const response = await fetch(
       `http://localhost:3000/contacts/${contact.id}`,
       {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(contacts),
+        body: formData,
       }
     );
-
     console.log(await response.json());
+    
     setContactCount((prev) => prev + 1);
     setEditModal(false);
   };
 
-  function handleChangeImage(e) {
-    const file = e.target.files[0];
-    const imageURL = URL.createObjectURL(file);
-    setImage(imageURL);
-    console.log(image);
-  };
-
-  function handleCloseModal(e) {
+  function handleCloseModal() {
     setEditModal(false);
   };
 
   return (
-    <div ref={modalRef} className={`${isEditModal ? '' : 'hidden'} z-10 mx-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 left-0 right-0`}>
+    <div ref={modalRef} className={`${editModal ? '' : 'hidden'} z-10 mx-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 left-0 right-0`}>
       <h2 className="text-center text-gray-500 font-semibold text-2xl">Edit Contact</h2>
       
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -101,7 +96,7 @@ const EditModal = ({
             className="hidden relative"
             id="modal-file-input"
             name="image"
-            onChange={handleChangeImage}
+            onChange={(e) => fileRef.current = e.target.files[0]}
           />
         </div>
         {/* Place these components within another component? */}
@@ -110,21 +105,35 @@ const EditModal = ({
           type="text"
           label="First name:"
           setValue={setFirstName}
+          setErrors={setErrors}
+          errors={errors}
           value={firstName}
-          required
         />
         <ModalCreateInput
           id="lastName"
           type="text"
           label="Last name:"
           setValue={setLastName}
+          setErrors={setErrors}
+          errors={errors}
           value={lastName}
         />
         <ModalCreateInput
           id="userName"
           type="text"
+          label="Phone number:"
+          setValue={setNumber}
+          setErrors={setErrors}
+          errors={errors}
+          value={number}
+        />
+        <ModalCreateInput
+          id="number"
+          type="text"
           label="User name:"
           setValue={setUserName}
+          setErrors={setErrors}
+          errors={errors}
           value={userName}
         />
         <ModalCreateInput
@@ -132,6 +141,8 @@ const EditModal = ({
           type="text"
           label="Email:"
           setValue={setEmail}
+          setErrors={setErrors}
+          errors={errors}
           value={email}
         />
         <ModalCreateInput
@@ -139,6 +150,8 @@ const EditModal = ({
           type="text"
           label="Birthday:"
           setValue={setDob}
+          setErrors={setErrors}
+          errors={errors}
           value={dob}
         />
         <ModalCreateInput
@@ -146,6 +159,8 @@ const EditModal = ({
           type="text"
           label="Event:"
           setValue={setEvent}
+          setErrors={setErrors}
+          errors={errors}
           value={event}
         />
         <div className="flex justify-end gap-2">

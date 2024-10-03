@@ -1,11 +1,14 @@
 import React from "react";
 
-const Header = ({setState, state}) => {
+const Header = ({ setCreateModal }) => {
 
   function handleDisplayModal(e) {
+
     e.preventDefault();
 
-    setState(true)
+    console.log('test');
+
+    setCreateModal(true)
   }
 
   return (
@@ -13,13 +16,12 @@ const Header = ({setState, state}) => {
         <div> {/* remove element if a modal is being displayed */}
           <h1 className="text-5xl m-2">Contacts</h1>
           <button className="
-            text-base border-none rounded text-white bg-gray-400 
-            hover:bg-gray-300 p-2.5" 
+                            text-base border-none rounded text-white bg-gray-400 
+                            hover:bg-gray-300 p-2.5" 
             onClick={handleDisplayModal}
-            disabled={state}
-            >
+          >
               Create Contact
-            </button>
+          </button>
         </div>
       </header>
   );

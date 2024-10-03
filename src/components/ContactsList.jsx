@@ -2,30 +2,41 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import CardModal from './CardModal.jsx';
 
-const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, setEditModal, editModal }) => {
+const ContactsList = (
+  { 
+    contactCount, 
+    setContactCount, 
+    setContacts,
+    contacts, 
+    setErrors,
+    errors
+  }) => {
   
+  const [editModal, setEditModal] = useState(false);
   const [contactClicked, setContactClicked] = useState({
     isClicked: false,
     index: ""
   }); 
 
-  async function getContacts () {
-    const response = await fetch("http://localhost:3000/contacts");
-    const data = await response.json();
-    setContacts(data);
-    setContactCount(contacts.length);
-
-    console.log('DATA ', await data); // TEST
-  };
-
   useEffect(()=> {
     getContacts();
   },[contactCount]);
 
+  async function getContacts () {
+
+    const response = await fetch("http://localhost:3000/contacts");
+    const data = await response.json();
+    
+    setContacts(data);
+    setContactCount(contacts.length);
+
+    // console.log('DATA ', await data);
+  };
+
   const handleCardClick = (index) => {
     setContactClicked({
       isClicked: true,
-      index: index // Set index to pass the correct contact to CardModal by accessing the contact with index of args value;
+      index: index 
     });
   };
 
@@ -71,6 +82,8 @@ const ContactsList = ({ contactCount, setContactCount, setContacts, contacts, se
           contacts={contacts}
           setEditModal={setEditModal}
           editModal={editModal}
+          setErrors={setErrors}
+          errors={errors}
         />
       }
     </div>

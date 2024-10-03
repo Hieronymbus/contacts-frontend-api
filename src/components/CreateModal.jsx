@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErrors}) => {
+const CreateModal = ({ setContactCount, createModal, setCreateModal, errors, setErrors}) => {
 
   const [firstName, setFirstName] = useState("Freddy");
   const [lastName, setLastName] = useState("Lamb");
@@ -15,8 +15,27 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
   const modalRef = useRef();
   const fileRef = useRef();
 
+  useEffect(() => {
+
+    function handleClickOutside(e) {
+
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        handleCloseModal();
+      };
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    
+}, []);
+
   async function handleSubmit(e) {
+
     e.preventDefault();
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const formData = new FormData();
     formData.append('image', fileRef.current);
@@ -28,13 +47,13 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
     formData.append('event', event);
     formData.append('number', number);
 
-    setErrors({});
+    const response = await fetch("http://localhost:3000/contacts", {
+      method: "POST",
+      body: formData
+    });
+    // console.log(await response.json());
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    //Error handling;
-
-    let isError = false;// Chat.....
+    let isError = false;
 
     if (firstName === '') {
       setErrors(prev => ({...prev, firstName: 'Enter a name'}));
@@ -55,51 +74,27 @@ const CreateModal = ({ setContactCount, isCreateModal, setState, errors, setErro
       setErrors(prev => ({...prev, email: 'Enter an email'}));
       isError = true;
     } else if (!emailRegex.test(email)) {
-      setErrors(prev => ({...prev, email: 'Please enter a valid email'}))
+      setErrors(prev => ({...prev, email: 'Please enter a valid email'}));
     };
 
     if (isError) {
-      console.log("fill out required fields");
-      console.log(errors);
       return;
     };
 
-    const response = await fetch("http://localhost:3000/contacts", {
-      method: "POST",
-      body: formData
-    });
-    console.log(await response.json());
-
     setContactCount(prev => prev + 1);
-
+    setErrors({});
     handleCloseModal();
-
   };
 
-  useEffect(() => {
-      function handleClickOutside(e) {
-        if (modalRef.current && !modalRef.current.contains(e.target)) {
-          handleCloseModal();
-          console.log(fileRef.current.name);
-        };
-      };
-
-      document.addEventListener('mousedown', handleClickOutside);
-
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      }
-      
-  }, []);
-
   function handleCloseModal() {
-    setState(false);
+
+    setCreateModal(false);
     setErrors({});
   };
 
   return (
     <div 
-      className={`${isCreateModal ? '' : 'hidden'} 
+      className={`${createModal ? '' : 'hidden'} 
               overflow-y-scroll z-10 mx-auto h-full w-80 flex-col 
               bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 
               left-0 right-0`}

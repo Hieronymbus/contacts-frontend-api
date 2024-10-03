@@ -9,9 +9,7 @@ function Main({
         setContacts, 
         contacts, 
         createModal, 
-        setCreateModal, 
-        editModal, 
-        setEditModal, 
+        setCreateModal,
         errors,
         setErrors,    
 }) {
@@ -20,19 +18,18 @@ function Main({
         <main className='max-w-96'>
             {createModal && 
                 <CreateModal 
-                    isCreateModal={createModal} 
+                    createModal={createModal} 
                     setContactCount={setContactCount} 
-                    setState={setCreateModal} 
+                    setCreateModal={setCreateModal} 
                     errors={errors}
                     setErrors={setErrors}    
-                />}
+                />
+            }
             <ContactsList 
                 setContactCount={setContactCount} 
                 contactCount={contactCount} 
                 setContacts={setContacts} 
                 contacts={contacts} 
-                setEditModal={setEditModal} 
-                editModal={editModal}
                 errors={errors}
                 setErrors={setErrors}
             />

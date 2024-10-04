@@ -13,7 +13,7 @@ function Main({
         setErrors,    
 }) {
 
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png');
 
     return (
         <main className='max-w-96'>
@@ -24,7 +24,7 @@ function Main({
                     setCreateModal={setCreateModal} 
                     errors={errors}
                     setErrors={setErrors}  
-                    setImage={setImage}  
+                    setImage={setImage} 
                 />
             }
             <ContactsList 

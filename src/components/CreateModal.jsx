@@ -66,12 +66,11 @@ const CreateModal = ({
       },
       body: formData
     });
-
 //TODO: Amalgamate a url path to static image folder and imagename. to display image through image src attribute. 
     const data = await response.json();
-    const imageName = data.name;
-    setImage(`http://localhost:3000/uploads/${imageName}`);
-    console.log(imageName);
+    const imageURL = data.image;
+    setImage(imageURL);
+    console.log(data); 
 
     let isError = false;
 

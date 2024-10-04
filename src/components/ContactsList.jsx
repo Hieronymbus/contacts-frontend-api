@@ -31,7 +31,7 @@ const ContactsList = (
     setContacts(data);
     setContactCount(contacts.length);
 
-    // console.log('DATA ', await data);
+    console.log('DATA ', await data);
   };
 
   const handleCardClick = (index) => {
@@ -54,8 +54,14 @@ const ContactsList = (
   return (
 
     <div className='flex flex-col justify-start relative'>
+
       {contacts.map((contact, index) => {
             
+            contact.image = image;
+            console.log(contact.image);
+
+            const imageURL = contact.image || image;
+
         return (
 
           <div 
@@ -64,7 +70,7 @@ const ContactsList = (
             key={contact.id}
           >
             <div id='list-col-1' className='flex justify-center w-1/2'>
-              <img src={image} className='w-full rounded-full aspect-square' />
+              <img src={imageURL} className='w-full rounded-full aspect-square' />
             </div>
             <div id='list-col-2' className='w-10/12 pl-5 text-base'>
               <p>{contact.firstName} {contact.lastName}</p>

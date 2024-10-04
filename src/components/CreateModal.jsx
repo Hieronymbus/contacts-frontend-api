@@ -101,6 +101,8 @@ const CreateModal = ({
       return;
     };
 
+    console.log("testing");
+
     setContactCount(prev => prev + 1);
     setErrors({});
     handleCloseModal();

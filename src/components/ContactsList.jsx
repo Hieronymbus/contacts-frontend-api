@@ -33,8 +33,6 @@ const ContactsList = (
     
     setContacts(data);
     setContactCount(contacts.length);
-
-    console.log('contacts ', data);
   };
 
   const handleCardClick = (index) => {
@@ -60,10 +58,7 @@ const ContactsList = (
 
       {contacts.map((contact, index) => {
             
-            contact.image = image;
-            console.log(contact.image);
-
-            const imageURL = contact.image || image;
+            const imageURL = contact.image;
 
         return (
 

@@ -20,7 +20,10 @@ const ContactsList = (
   }); 
 
   useEffect(()=> {
-    getContacts();
+    
+    setTimeout(() => {
+      getContacts();
+    }, 1000)
   },[contactCount]);
 
   async function getContacts () {
@@ -31,7 +34,7 @@ const ContactsList = (
     setContacts(data);
     setContactCount(contacts.length);
 
-    console.log('DATA ', await data);
+    console.log('contacts ', data);
   };
 
   const handleCardClick = (index) => {

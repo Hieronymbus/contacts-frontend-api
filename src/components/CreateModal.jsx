@@ -69,6 +69,7 @@ const CreateModal = ({
 //TODO: Amalgamate a url path to static image folder and imagename. to display image through image src attribute. 
     const data = await response.json();
     const imageURL = data.image;
+    //I HAVE THE URL RESPONSE. NOW WHAT DO I DO WITH IT?
     setImage(imageURL);
     console.log(data); 
 

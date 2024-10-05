@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
-//I need a way to distinguish between create and edit modal.
-//Have a POST method for the Create operation and a PUT method for the Update operation.
-
 const FormModal = ({ 
   setContactCount, 
   createModal, 

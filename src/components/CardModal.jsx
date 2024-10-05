@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import FormModal from "./FormModal";
 
 const CardModal = (
   { 
     onHandleCardClose, 
     contact, 
-    contacts, 
     setContactCount,
     setErrors,
     errors,
@@ -13,6 +12,22 @@ const CardModal = (
   }) => {
 
     const [editModal, setEditModal] = useState(false);
+
+    const modalRef = useRef();
+
+    useEffect(() => {
+
+      function handleClickOutside(e) {
+        if (modalRef.current && !modalRef.current.contains(e.target)) {
+          handleCloseModal();
+        };
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, []);
     
     const handleDeleteContact = async () => {
       const response = await fetch (`http://localhost:3000/contacts/${contact.id}`,{
@@ -48,7 +63,10 @@ const CardModal = (
               image={image}
             /> 
           :       
-            <div className={`fixed w-80 max-h-fit my-auto mx-auto bg-gray-100 rounded shadow-xl left-0 right-0 top-0`}>
+            <div 
+              className={`fixed w-80 max-h-fit my-auto mx-auto bg-gray-100 rounded shadow-xl left-0 right-0 top-0`}
+              ref={modalRef}
+            >
               <div>
                 <form className="flex justify-end relative">
                   <button className='m-2 absolute left-2' onClick={handleCloseModal}>X</button>

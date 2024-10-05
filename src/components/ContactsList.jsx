@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import CardModal from './CardModal.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const ContactsList = (
   { 
@@ -21,9 +23,7 @@ const ContactsList = (
 
   useEffect(()=> {
     
-    setTimeout(() => {
-      getContacts();
-    }, 1000)
+    getContacts();
   },[contactCount]);
 
   async function getContacts () {
@@ -58,7 +58,7 @@ const ContactsList = (
 
       {contacts.map((contact, index) => {
             
-            const imageURL = contact.image;
+          const imageURL = contact.image;
 
         return (
 
@@ -72,12 +72,13 @@ const ContactsList = (
             </div>
             <div id='list-col-2' className='w-10/12 pl-5 text-base'>
               <p>{contact.firstName} {contact.lastName}</p>
+              <p><FontAwesomeIcon icon={faEnvelope} /> {contact.email}</p>
               <p>{contact.dob}</p>
               <p>{contact.event}</p>
             </div>
           </div> 
           )
-      })}
+      })};
 
       {contactClicked.isClicked && 
         <CardModal 
@@ -91,7 +92,7 @@ const ContactsList = (
           errors={errors}
           image={image}
         />
-      }
+      };
     </div>
 
 

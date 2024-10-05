@@ -13,7 +13,6 @@ const FormModal = ({
   errors, 
   setErrors,
   setImage,
-  contacts,
   contact
 }) => {
 
@@ -43,9 +42,6 @@ const FormModal = ({
     }
     
   }, []);
-
-  console.log('createModal ', createModal);
-  console.log('editModal ', editModal);
 
     function handleChangeImage(e) {
 

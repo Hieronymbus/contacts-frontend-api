@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import CardModal from './CardModal.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 const ContactsList = (
   { 
@@ -20,6 +20,16 @@ const ContactsList = (
     isClicked: false,
     index: ""
   }); 
+
+  function truncateText(text) {
+
+    if (text.length > 16) {
+
+      text = text.slice(0, 16) + ' ...';
+
+      return text;
+    };
+  };
 
   useEffect(()=> {
     
@@ -70,11 +80,11 @@ const ContactsList = (
             <div id='list-col-1' className='flex justify-center w-1/2'>
               <img src={imageURL} className='w-full rounded-full aspect-square' />
             </div>
-            <div id='list-col-2' className='w-10/12 pl-5 text-base'>
-              <p>{contact.firstName} {contact.lastName}</p>
-              <p><FontAwesomeIcon icon={faEnvelope} /> {contact.email}</p>
-              <p>{contact.dob}</p>
-              <p>{contact.event}</p>
+            <div id='list-col-2' className='w-10/12 pl-5 text-base flex flex-col justify-between'>
+              <p className='text-2xl mt-0 mb-2'>{contact.firstName} {contact.lastName}</p>
+              <p className='flex items-center'><FontAwesomeIcon icon={faEnvelope} className='w-5  pr-2'/> {truncateText(contact.email)}</p>
+              <p className='flex items-center'><FontAwesomeIcon icon={faPhone} className='w-5 pr-2'/>{contact.number}</p>
+              <p className='flex items-center'><FontAwesomeIcon icon={faChartLine} className='w-5  pr-2'/> {contact.event}</p>
             </div>
           </div> 
           )

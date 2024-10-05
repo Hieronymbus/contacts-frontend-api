@@ -41,7 +41,6 @@ const CardModal = (
             <FormModal 
               contact={contact} 
               setContactCount={setContactCount} 
-              contacts={contacts} 
               setEditModal={setEditModal} 
               editModal={editModal} 
               setErrors={setErrors}

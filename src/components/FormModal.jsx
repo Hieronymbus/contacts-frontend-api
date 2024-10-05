@@ -5,7 +5,7 @@ import ModalCreateInput from "./ModalCreateInput.jsx";
 //Have a POST method for the Create operation and a PUT method for the Update operation.
 
 const FormModal = ({ 
-  setcontactCount, 
+  setContactCount, 
   createModal, 
   setCreateModal, 
   setEditModal,
@@ -66,6 +66,32 @@ const FormModal = ({
     formData.append('event', event);
     formData.append('number', number);
 
+    let isError = false;
+
+    if (firstName === '') {
+      setErrors(prev => ({...prev, firstName: 'Enter a name'}));
+      isError = true;
+    }
+    if (number.length < 10) {
+      setErrors(prev => ({...prev, number: 'Enter a valid number'}));
+    };
+    if (lastName === '') {
+      setErrors(prev => ({...prev, lastName: 'Enter a name'}));
+      isError = true;
+    };
+    if (userName === '') {
+      setErrors(prev => ({...prev, userName: 'Enter a username'}));
+      isError = true;
+    };
+    if (!emailRegex.test(email)) {
+      setErrors(prev => ({...prev, email: 'Please enter a valid email'}));
+      isError = true;
+    };
+
+    if (isError) {
+      return;
+    };
+
     if (createModal) {
 
       const response = await fetch("http://localhost:3000/contacts", {
@@ -93,42 +119,18 @@ const FormModal = ({
       });
     };
 
-    let isError = false;
-
-    if (firstName === '') {
-      setErrors(prev => ({...prev, firstName: 'Enter a name'}));
-      isError = true;
-    }
-    if (number.length < 10) {
-      setErrors(prev => ({...prev, number: 'Enter a valid number'}));
-    };
-    if (lastName === '') {
-      setErrors(prev => ({...prev, lastName: 'Enter a name'}));
-      isError = true;
-    };
-    if (userName === '') {
-      setErrors(prev => ({...prev, userName: 'Enter a username'}));
-      isError = true;
-    };
-    if (!emailRegex.test(email)) {
-      setErrors(prev => ({...prev, email: 'Please enter a valid email'}));
-      isError = true;
-    };
-
-    if (isError) {
-      return;
-    };
-
     console.log("testing");
 
-    setcontactCount(prev => prev + 1);
+    setContactCount(prev => prev + 1);
     setErrors({});
     handleCloseModal();
   };
 
   function handleCloseModal() {
 
-    setCreateModal(false);
+    if (createModal) {
+      setCreateModal(false);
+    }
     setEditModal(false);
     setErrors({});
   };
@@ -141,7 +143,7 @@ const FormModal = ({
               left-0 right-0`}
       ref={modalRef}
     >   
-        <h2 className="text-center text-gray-500 font-semibold text-2xl">Create New contact</h2>
+        <h2 className="text-center text-gray-500 font-semibold text-2xl">{createModal ? 'Create New contact' : 'Edit contact'}</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex justify-between items-center mt-5">
             <label

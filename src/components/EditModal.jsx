@@ -7,7 +7,8 @@ const EditModal = ({
   setContactCount,
   contact,
   setErrors,
-  errors
+  errors,
+  image
 }) => {
   const [firstName, setFirstName] = useState(contact.firstName);
   const [lastName, setLastName] = useState(contact.lastName);
@@ -50,9 +51,8 @@ const EditModal = ({
     }
 
     const formData = new FormData();
-    const imageFile = fileRef.current === null ? '' : fileRef.current;
 
-    formData.append('image', imageFile);
+    formData.append('image', fileRef.current);
     formData.append('firstName', firstName);
     formData.append('lastName', lastName);
     formData.append('userName', userName);
@@ -61,15 +61,44 @@ const EditModal = ({
     formData.append('event', event);
     formData.append('number', number);
 
+    let isError = false;
+
+    if (firstName === '') {
+      setErrors(prev => ({...prev, firstName: 'Enter a name'}));
+      isError = true;
+    }
+    if (number.length < 10) {
+      setErrors(prev => ({...prev, number: 'Enter a valid number'}));
+    };
+    if (lastName === '') {
+      setErrors(prev => ({...prev, lastName: 'Enter a name'}));
+      isError = true;
+    };
+    if (userName === '') {
+      setErrors(prev => ({...prev, userName: 'Enter a username'}));
+      isError = true;
+    };
+    if (!emailRegex.test(email)) {
+      setErrors(prev => ({...prev, email: 'Please enter a valid email'}));
+      isError = true;
+    };
+
+    if (isError) {
+      return;
+    };
+
     const response = await fetch(
       `http://localhost:3000/contacts/${contact.id}`, {
         method: "PUT",
+        headers: {
+          "Accept": "application/json"
+        },
         body: formData,
-      }
+      }   
     );
-    console.log(await response.json());
     
     setContactCount((prev) => prev + 1);
+    setErrors({});
     setEditModal(false);
   };
 
@@ -78,7 +107,11 @@ const EditModal = ({
   };
 
   return (
-    <div ref={modalRef} className={`${editModal ? '' : 'hidden'} z-10 mx-auto w-80 flex-col bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 left-0 right-0`}>
+    <div ref={modalRef} 
+      className={`${editModal ? '' : 'hidden'} z-10 mx-auto w-80 flex-col 
+      bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 left-0 right-0
+      overflow-y-scroll h-full`
+    }>
       <h2 className="text-center text-gray-500 font-semibold text-2xl">Edit Contact</h2>
       
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -95,7 +128,6 @@ const EditModal = ({
             className="hidden relative"
             id="modal-file-input"
             name="image"
-            value={fileRef.current}
             onChange={(e) => fileRef.current = e.target.files[0]}
           />
         </div>
@@ -109,6 +141,7 @@ const EditModal = ({
           errors={errors}
           value={firstName}
         />
+        {errors.firstName && <p className="-mt-3 text-red-600 text-xs">{errors.firstName}</p>}
         <ModalCreateInput
           id="lastName"
           type="text"
@@ -118,6 +151,7 @@ const EditModal = ({
           errors={errors}
           value={lastName}
         />
+        {errors.lastName && <p className="-mt-3 text-red-600 text-xs">{errors.lastName}</p>}
         <ModalCreateInput
           id="userName"
           type="text"
@@ -127,6 +161,7 @@ const EditModal = ({
           errors={errors}
           value={number}
         />
+        {errors.number && <p className='-mt-3 text-red-600 text-xs'>{errors.number}</p>}
         <ModalCreateInput
           id="number"
           type="text"
@@ -136,6 +171,7 @@ const EditModal = ({
           errors={errors}
           value={userName}
         />
+        {errors.userName && <p className='-mt-3 text-red-600 text-xs'>{errors.userName}</p>}
         <ModalCreateInput
           id="email"
           type="text"
@@ -145,6 +181,7 @@ const EditModal = ({
           errors={errors}
           value={email}
         />
+        {errors.email && <p className='-mt-3 text-red-600 text-xs'>{errors.email}</p>}
         <ModalCreateInput
           id="dob"
           type="text"

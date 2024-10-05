@@ -37,10 +37,10 @@ const CreateModal = ({
     
   }, []);
 
-  function handleChangeImage(e) {
+    function handleChangeImage(e) {
 
-    fileRef.current = e.target.files[0];
-  };
+      fileRef.current = e.target.files[0];
+    };
 
   async function handleSubmit(e) {
 
@@ -90,11 +90,9 @@ const CreateModal = ({
       setErrors(prev => ({...prev, userName: 'Enter a username'}));
       isError = true;
     };
-    if (email === '') {
-      setErrors(prev => ({...prev, email: 'Enter an email'}));
-      isError = true;
-    } else if (!emailRegex.test(email)) {
+    if (!emailRegex.test(email)) {
       setErrors(prev => ({...prev, email: 'Please enter a valid email'}));
+      isError = true;
     };
 
     if (isError) {

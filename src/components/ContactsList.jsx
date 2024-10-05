@@ -89,6 +89,7 @@ const ContactsList = (
           editModal={editModal}
           setErrors={setErrors}
           errors={errors}
+          image={image}
         />
       }
     </div>

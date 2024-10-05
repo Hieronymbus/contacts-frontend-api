@@ -8,7 +8,8 @@ const CardModal = (
     contacts, 
     setContactCount,
     setErrors,
-    errors
+    errors,
+    image
   }) => {
 
     const [editModal, setEditModal] = useState(false);
@@ -45,6 +46,7 @@ const CardModal = (
               editModal={editModal} 
               setErrors={setErrors}
               errors={errors}
+              image={image}
             /> 
           :       
             <div className={`fixed w-80 max-h-fit my-auto mx-auto bg-gray-100 rounded shadow-xl left-0 right-0 top-0`}>

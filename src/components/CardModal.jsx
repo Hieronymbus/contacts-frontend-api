@@ -75,14 +75,15 @@ const CardModal = (
                 </form>
 
                 <div className="w-full min-h-80 flex justify-center items-center p-5">
-                  <img src={contact.image} alt="Profile Pic" className="rounded-full aspect-square" onClick={onHandleCardClose} />
+                  <img src={contact.image} alt="Profile Pic" className="rounded-full aspect-square border-solid border border-slate-500" onClick={onHandleCardClose} />
                 </div>
                 {/* place the stragglers within a div to make future styling easier */}
-                <div className='p-5'>
-                  <p className="font-bold text-3xl text-center">{contact.firstName} {contact.lastName}</p>
-                  <p className="text-center">{contact.email}</p>
-                  <p className="text-al">Phone number</p>
-                  <p className="mb-2 text-slate-500">{contact.phoneNumber}</p>
+                <div className='p-5 pt-0'>
+                  <p className="font-bold text-3xl text-center mb-5">{contact.userName}</p>
+                  <p className="text-center text-xl mb-10">{contact.email}</p>
+                  <p className='text-2xl mb-5'>Contact Details</p>
+                  <p className="text-xl">Phone number</p>
+                  <p className="mb-2 text-slate-500">{contact.number}</p>
                   <p className="text-xl">Event</p>
                   <p className="mb-2 text-slate-500">{contact.event}</p>
                   <p className="text-xl">Birthday</p>

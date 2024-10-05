@@ -78,7 +78,7 @@ const ContactsList = (
             key={contact.id}
           >
             <div id='list-col-1' className='flex justify-center w-1/2'>
-              <img src={imageURL} className='w-full rounded-full aspect-square' />
+              <img src={imageURL} className='w-full rounded aspect-square border border-slate-200 border-solid' />
             </div>
             <div id='list-col-2' className='w-10/12 pl-5 text-base flex flex-col justify-between'>
               <p className='text-2xl mt-0 mb-2'>{contact.firstName} {contact.lastName}</p>

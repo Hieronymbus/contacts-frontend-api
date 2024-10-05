@@ -7,8 +7,7 @@ const EditModal = ({
   setContactCount,
   contact,
   setErrors,
-  errors,
-  image
+  errors
 }) => {
   const [firstName, setFirstName] = useState(contact.firstName);
   const [lastName, setLastName] = useState(contact.lastName);
@@ -41,15 +40,10 @@ const EditModal = ({
   }, [])
 
   async function handleSubmit(e) {
+
     e.preventDefault();
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!emailRegex.test(email)) {
-      alert("nah");
-      return;
-    }
-
     const formData = new FormData();
 
     formData.append('image', fileRef.current);

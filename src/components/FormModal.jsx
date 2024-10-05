@@ -2,26 +2,28 @@ import React, { useState, useRef, useEffect } from "react";
 import ModalCreateInput from "./ModalCreateInput.jsx";
 
 //I need a way to distinguish between create and edit modal.
-//I need to distinguish values... have edit modal hold contacts current information in the inputs. 
-//Create modal will be null.
 //Have a POST method for the Create operation and a PUT method for the Update operation.
 
-const CreateModal = ({ 
-  setContactCount, 
+const FormModal = ({ 
+  setcontactCount, 
   createModal, 
   setCreateModal, 
+  setEditModal,
+  editModal,
   errors, 
   setErrors,
-  setImage
+  setImage,
+  contacts,
+  contact
 }) => {
 
-  const [firstName, setFirstName] = useState(createModal ? "Freddy" : Contact.firstName);
-  const [lastName, setLastName] = useState(createModal ? "Lamb" : Contact.lastName);
-  const [userName, setUserName] = useState(createModal ? "FreeLamb" : Contact.userName);
-  const [email, setEmail] = useState(createModal ? "Freelamb@gmail.com" : Contact.email);
-  const [dob, setDob] = useState(createModal ? "Nov 12, 2000" : Contact.dob);
-  const [number, setNumber] = useState(createModal ? '021 089 06584' : Contact.number);
-  const [event, setEvent] = useState(createModal ? "Coding" : Contact.event);
+  const [firstName, setFirstName] = useState(createModal ? "Freddy" : contact.firstName);
+  const [lastName, setLastName] = useState(createModal ? "Lamb" : contact.lastName);
+  const [userName, setUserName] = useState(createModal ? "FreeLamb" : contact.userName);
+  const [email, setEmail] = useState(createModal ? "Freelamb@gmail.com" : contact.email);
+  const [dob, setDob] = useState(createModal ? "Nov 12, 2000" : contact.dob);
+  const [number, setNumber] = useState(createModal ? '021 089 06584' : contact.number);
+  const [event, setEvent] = useState(createModal ? "Coding" : contact.event);
 
   const modalRef = useRef();
   const fileRef = useRef();
@@ -89,7 +91,7 @@ const CreateModal = ({
           },
           body: formData,
       });
-    }
+    };
 
     let isError = false;
 
@@ -119,7 +121,7 @@ const CreateModal = ({
 
     console.log("testing");
 
-    setContactCount(prev => prev + 1);
+    setcontactCount(prev => prev + 1);
     setErrors({});
     handleCloseModal();
   };
@@ -127,18 +129,19 @@ const CreateModal = ({
   function handleCloseModal() {
 
     setCreateModal(false);
+    setEditModal(false);
     setErrors({});
   };
 
   return (
     <div 
-      className={`${createModal ? '' : 'hidden'} 
+      className={`${createModal || editModal ? '' : 'hidden'} 
               overflow-y-scroll z-10 mx-auto h-full w-80 flex-col 
               bg-slate-100 px-5 py-5 rounded shadow-xl fixed top-0 
               left-0 right-0`}
       ref={modalRef}
     >   
-        <h2 className="text-center text-gray-500 font-semibold text-2xl">Create New Contact</h2>
+        <h2 className="text-center text-gray-500 font-semibold text-2xl">Create New contact</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex justify-between items-center mt-5">
             <label
@@ -237,4 +240,4 @@ const CreateModal = ({
     </div>
   );
 };
-export default CreateModal;
+export default FormModal;

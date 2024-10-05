@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EditModal from "./EditModal";
+import FormModal from "./FormModal";
 
 const CardModal = (
   { 
@@ -38,7 +38,7 @@ const CardModal = (
       <>
         {
           editModal ? 
-            <EditModal 
+            <FormModal 
               contact={contact} 
               setContactCount={setContactCount} 
               contacts={contacts} 

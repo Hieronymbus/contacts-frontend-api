@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ContactsList from '../components/ContactsList.jsx';
-import CreateModal from '../components/CreateModal.jsx';
+import FormModal from '../components/FormModal.jsx';
 
 function Main({ 
         setContactCount,    
@@ -18,7 +18,7 @@ function Main({
     return (
         <main className='max-w-96'>
             {createModal && 
-                <CreateModal 
+                <FormModal 
                     createModal={createModal} 
                     setContactCount={setContactCount} 
                     setCreateModal={setCreateModal} 

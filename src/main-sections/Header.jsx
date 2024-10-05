@@ -1,14 +1,11 @@
 import React from "react";
 
-const Header = ({ setCreateModal }) => {
+const Header = ({ setCreateModal, createModal }) => {
 
-  function handleDisplayModal(e) {
+  function handleDisplayModal() {
 
-    e.preventDefault();
-
-    console.log('test');
-
-    setCreateModal(true)
+    setCreateModal(true);
+    console.log(createModal);
   }
 
   return (

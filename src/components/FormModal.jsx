@@ -17,13 +17,13 @@ const FormModal = ({
   contact
 }) => {
 
-  const [firstName, setFirstName] = useState(createModal ? "Freddy" : contact.firstName);
-  const [lastName, setLastName] = useState(createModal ? "Lamb" : contact.lastName);
-  const [userName, setUserName] = useState(createModal ? "FreeLamb" : contact.userName);
-  const [email, setEmail] = useState(createModal ? "Freelamb@gmail.com" : contact.email);
-  const [dob, setDob] = useState(createModal ? "Nov 12, 2000" : contact.dob);
-  const [number, setNumber] = useState(createModal ? '021 089 06584' : contact.number);
-  const [event, setEvent] = useState(createModal ? "Coding" : contact.event);
+  const [firstName, setFirstName] = useState(createModal ? "" : contact.firstName);
+  const [lastName, setLastName] = useState(createModal ? "" : contact.lastName);
+  const [userName, setUserName] = useState(createModal ? "" : contact.userName);
+  const [email, setEmail] = useState(createModal ? "" : contact.email);
+  const [dob, setDob] = useState(createModal ? "" : contact.dob);
+  const [number, setNumber] = useState(createModal ? "" : contact.number);
+  const [event, setEvent] = useState(createModal ? "" : contact.event);
 
   const modalRef = useRef();
   const fileRef = useRef();
@@ -43,6 +43,9 @@ const FormModal = ({
     }
     
   }, []);
+
+  console.log('createModal ', createModal);
+  console.log('editModal ', editModal);
 
     function handleChangeImage(e) {
 
@@ -130,8 +133,10 @@ const FormModal = ({
 
     if (createModal) {
       setCreateModal(false);
-    }
-    setEditModal(false);
+    } else {
+      setEditModal(false);
+    };
+
     setErrors({});
   };
 

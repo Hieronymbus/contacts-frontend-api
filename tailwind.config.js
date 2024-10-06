@@ -32,7 +32,7 @@ export default {
         '.custom-input-label:hover::after': {
           backgroundColor: 'rgb(209 213 219);',
           borderColor: 'rgb(209 213 219);'
-        }
+        },
       });
     },
   ],

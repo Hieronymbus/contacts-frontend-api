@@ -20,7 +20,8 @@ function App() {
                 min-w-screen 
                 min-h-screen 
                 relative 
-                bg-slate-950'
+                bg-slate-950
+                md:px-10'
     >
       <Header 
         setContactCount={setContactCount}     

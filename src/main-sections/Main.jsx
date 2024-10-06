@@ -16,7 +16,7 @@ function Main({
     const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png');
 
     return (
-        <main className='max-w-96'>
+        <main className='max-w-96 md:max-w-full'>
             {createModal && 
                 <FormModal 
                     createModal={createModal} 

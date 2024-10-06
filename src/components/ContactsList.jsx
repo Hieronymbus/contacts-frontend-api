@@ -64,7 +64,7 @@ const ContactsList = (
   
   return (
 
-    <div className='flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 relative'>
+    <div className='flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 relative w-full'>
 
       {contacts.map((contact, index) => {
             

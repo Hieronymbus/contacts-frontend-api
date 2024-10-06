@@ -64,24 +64,26 @@ const CardModal = (
             /> 
           :       
             <div 
-              className={`fixed w-80 max-h-fit my-auto mx-auto bg-gray-100 rounded shadow-xl left-0 right-0 top-0`}
+              className='fixed w-80 max-h-fit my-auto mx-auto bg-gray-100 rounded shadow-xl left-0 right-0 top-0
+                        bottom-0 md:w-4/5 md:h-3/4 md:flex p-10'
               ref={modalRef}
             >
-              <div>
-                <form className="flex justify-end relative">
-                  <button className='m-2 absolute left-2' onClick={handleCloseModal}>X</button>
-                  <button className="m-2" onClick={handleEditContact}>Edit</button>
+                <form className="flex justify-end relative md:absolute md:top-0 md:right-0">
                   <button className="m-2" onClick={handleDeleteContact}>Delete</button>
+                  <button className='m-2' onClick={handleCloseModal}>X</button>
                 </form>
 
-                <div className="w-full min-h-80 flex justify-center items-center p-5">
+                <div className="w-full md:w-1/2 min-h-80 flex flex-col justify-center self-start items-center">
                   <img src={contact.image} alt="Profile Pic" className="rounded-full aspect-square border-solid border border-slate-500" onClick={onHandleCardClose} />
+                  <p className="font-bold text-3xl text-center my-5">{contact.userName}</p>
+                  <p className="text-center text-xl mb-5">{contact.email}</p>
+                  <button className="m-2" onClick={handleEditContact}>Edit</button>
                 </div>
-                {/* place the stragglers within a div to make future styling easier */}
-                <div className='p-5 pt-0'>
-                  <p className="font-bold text-3xl text-center mb-5">{contact.userName}</p>
-                  <p className="text-center text-xl mb-10">{contact.email}</p>
+
+                <div className='ml-16 pt-0 md:min-h-80 self-start'>
                   <p className='text-2xl mb-5'>Contact Details</p>
+                  {/* <p className='text-xl'>Email</p>
+                  <p className='mb-2 text-slate-500'>{contact.email}</p> */}
                   <p className="text-xl">Phone number</p>
                   <p className="mb-2 text-slate-500">{contact.number}</p>
                   <p className="text-xl">Event</p>
@@ -89,7 +91,6 @@ const CardModal = (
                   <p className="text-xl">Birthday</p>
                   <p className="mb-2 text-slate-500">{contact.dob}</p>
                 </div>
-              </div>
             </div>
         }
       </>

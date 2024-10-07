@@ -24,9 +24,7 @@ const ContactsList = (
   function truncateText(text) {
 
     if (text.length > 16) {
-
       text = text.slice(0, 16) + ' ...';
-
       return text;
     };
   };

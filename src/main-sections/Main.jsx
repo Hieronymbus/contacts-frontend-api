@@ -15,6 +15,15 @@ function Main({
 
     const [image, setImage] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png');
 
+    // window.addEventListener('resize', () => {
+    //     const windowWidth = window.innerWidth;
+    //     if (windowWidth < 800 && windowWidth > 600) {
+    //         console.log('Howdy');
+    //     } else if(windowWidth < 700) {
+    //         console.log('Perspicaious');
+    //     }
+    // });
+
     return (
         <main className='max-w-96 md:max-w-full'>
             {createModal && 

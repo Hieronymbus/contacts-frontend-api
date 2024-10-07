@@ -40,11 +40,6 @@ const FormModal = ({
     
   }, []);
 
-    function handleChangeImage(e) {
-
-      fileRef.current = e.target.files[0];
-    };
-
   async function handleSubmit(e) {
 
     e.preventDefault();
@@ -53,7 +48,7 @@ const FormModal = ({
 
     const formData = new FormData();
 
-    formData.append('image', fileRef.current);
+    formData.append('image', fileRef.current.files[0]);
     formData.append('firstName', firstName);
     formData.append('lastName', lastName);
     formData.append('userName', userName);
@@ -156,7 +151,7 @@ const FormModal = ({
               className="hidden relative"
               id="modal-file-input"
               name="image"
-              onChange={handleChangeImage}
+              ref={fileRef}
             />
           </div>
           {/* Place these components within another component? */}

@@ -28,6 +28,11 @@ const CardModal = (
         document.removeEventListener('mousedown', handleClickOutside);
       };
     }, []);
+
+    window.addEventListener('resize', () => {
+      const windowWidth = window.innerWidth;
+      console.log(windowWidth);
+    });
     
     const handleDeleteContact = async () => {
       const response = await fetch (`http://localhost:3000/contacts/${contact.id}`,{
